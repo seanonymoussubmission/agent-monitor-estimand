@@ -1,0 +1,5 @@
+data/*/
+*.npz
+*.parquet
+__pycache__/
+FINAL/
