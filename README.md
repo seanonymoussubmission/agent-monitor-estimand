@@ -47,6 +47,8 @@ Scripts expect them under `data/`; see `data/README.md`.
 | dependence diagnostics | `85_dependence.py` |
 | non-coding generality; external capability | `84,83` |
 | probe variants (MLP, mean-pool) | `88_probe_variants.py` |
+| finite-repeat corrected ICC | `97_icc_corrected.py` |
+| fair deployment comparison (tuned abort, CIs) | `98_deployment_fair.py` |
 
 ## Expected headline outputs
 - test A: pooled > 0.65 with within = 0.500 exactly

@@ -112,7 +112,7 @@ def simulate(kind,budget,rg,use_prior=False):
     order=list(tasks); rg.shuffle(order); ptr=0
     # break-even quantities for fair-abort: estimate r,d from replay stats per task
     while alive and spent<budget:
-        if kind in ("allocate","route","route+prior","hybrid","fair-abort"):
+        if kind in ("allocate","route","route-pure","route+prior","hybrid","fair-abort"):
             best,bv=None,-1.0
             for t in alive:
                 al_,be_=ab[t][0]+mon[t][0], ab[t][1]+mon[t][1]
@@ -137,21 +137,21 @@ def simulate(kind,budget,rg,use_prior=False):
                 spent+=r["tok"]; got=r["succ"]
         else:
             spent+=r["tok"]; got=r["succ"]
-        if kind in ("route","route+prior"):
+        if kind in ("route","route-pure","route+prior"):
             # monitor score as pseudo-observation, weight MONW per pull
             mon[cand][0]+= MONW*(1-s); mon[cand][1]+= MONW*s
         if got: solved+=1; alive.discard(cand)
-        else: ab[cand][1]+=1.0
+        elif kind != "route-pure": ab[cand][1]+=1.0   # route-pure: no outcome history
     return solved
 
-POLS=[("uniform",False),("allocate",True),("route",False),("route+prior",True),
-      ("hybrid",True),("fair-abort",True)]
+POLS=[("uniform",False),("allocate",True),("ts-cold",False),("route",False),
+      ("route-pure",False),("route+prior",True),("hybrid",True),("fair-abort",True)]
 print(f"\n{'budget':>8} | "+" | ".join(f"{n:>13}" for n,_ in POLS))
 res={}
 for B in a.budgets:
     row=[]
     for name,up in POLS:
-        kind="allocate" if name=="allocate" else name
+        kind="allocate" if name in ("allocate","ts-cold") else name
         vals=[simulate(kind,B,np.random.default_rng(11000+s),use_prior=up) for s in range(a.trials)]
         row.append(f"{np.mean(vals):6.1f}±{np.std(vals):4.1f}")
         res[f"{int(B)}_{name}"]=[float(np.mean(vals)),float(np.std(vals))]

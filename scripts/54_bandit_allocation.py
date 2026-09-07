@@ -61,6 +61,7 @@ def run_policy(kind, rng, w=1.0, give_up=None, cost_sample=False):
     costs = {t: [c for _, c in T[t]] for t in tasks}
     seen = {t: 0 for t in tasks}; wins = {t: 0 for t in tasks}
     stat_score = {t: (sum(x for x, _ in P[t]) / len(P[t])) / c_mean[t] for t in tasks}
+    stat_order = sorted(tasks, key=lambda t: -stat_score[t]); sptr = 0
     while alive and spent < a.budget:
         if kind == "uniform":
             for _ in range(len(order)):
@@ -69,9 +70,14 @@ def run_policy(kind, rng, w=1.0, give_up=None, cost_sample=False):
         elif kind == "oracle":
             cand = max(alive, key=lambda t: p_true[t] / c_mean[t])
         elif kind == "static":
-            # OUR OWN §7 policy: rank by transferred difficulty, never update.
-            # If the bandit cannot beat this, the online machinery adds nothing.
-            cand = max(alive, key=lambda t: stat_score[t])
+            # rank by transferred difficulty, never update -- but walk the ranked
+            # list in fixed priority order (a failed task waits for the next
+            # pass) rather than retrying the top task forever.
+            cand = None
+            for _ in range(len(stat_order)):
+                c = stat_order[sptr % len(stat_order)]; sptr += 1
+                if c in alive: cand = c; break
+            if cand is None: break
         elif kind == "own_hist":
             # try everything once, then exploit what worked -- what a competent
             # engineer builds without any of our machinery
