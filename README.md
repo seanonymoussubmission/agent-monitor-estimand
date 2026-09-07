@@ -56,7 +56,10 @@ Scripts expect them under `data/`; see `data/README.md`.
 ## Expected headline outputs
 - test A: pooled > 0.65 with within = 0.500 exactly
 - decomposition identity exact to 1e-12
-- C4-L within-task mean 0.513, 0/16 Holm survivors
-- Automata reproduction: pooled 0.806 (published 0.799)
-- matched-depth fractional leak: +0.064
-- C3 factorial: model-only 0.568, task-only 0.826, per-model oracle 0.962–0.998
+- C4-L within-task mean ~0.51-0.52, 0/16 Holm survivors
+- Automata reproduction: pooled 0.805-0.807 (published 0.799)
+- matched-depth fractional leak: +0.060 to +0.065
+- C3 factorial: task-only 0.825-0.827 and per-model oracle 0.962-0.998 (tight);
+  model-only 0.55-0.57 (noisy over 17 values)
+Stochastic steps (bootstraps, replay, cross-fitting) reproduce within these ranges;
+deterministic identities (decomposition, ceiling formulas) reproduce exactly.
