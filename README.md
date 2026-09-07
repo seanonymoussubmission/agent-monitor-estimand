@@ -49,6 +49,9 @@ Scripts expect them under `data/`; see `data/README.md`.
 | probe variants (MLP, mean-pool) | `88_probe_variants.py` |
 | finite-repeat corrected ICC | `97_icc_corrected.py` |
 | fair deployment comparison (tuned abort, CIs) | `98_deployment_fair.py` |
+| E1: within-unit training objective (pre-registered) | `99_within_objective.py` |
+| E2: required within-task AUROC sweep (pre-registered) | `100_required_within.py` |
+| E3: leaderboard-moment difficulty ceilings | `101_leaderboard_ceiling.py` |
 
 ## Expected headline outputs
 - test A: pooled > 0.65 with within = 0.500 exactly
