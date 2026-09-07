@@ -100,3 +100,29 @@ Decision rule, stated in advance:
   benchmark-efficiency (Goal-B) objective, and weaken our early-null scope accordingly.
 - Adapter failures or schema mismatches will be reported as such, not silently dropped.
 Only public artifacts are used; the authors are not contacted.
+
+### E6 amendment (registered after the 2,000-trajectory smoke run, before the full run)
+Facts found during the smoke run, recorded per the rule above:
+1. C1 (SWE-agent-trajectories) does not carry the action-typed message schema the
+   released step builder requires; C1 is excluded as an adapter incompatibility and
+   reported as such. E6 runs on C2 (SWE-rebench/OpenHands, 67,074 trajectories over
+   6,306 instances).
+2. The released reference-free flag (`--disable-answer-features`) crashes as shipped:
+   `feature_engineer.py` concatenates the gold-answer feature names into
+   NUMERIC/BOOL/CATEGORICAL_FEATURES unconditionally, so `fit()` raises
+   `KeyError: 'gold_repo'` whenever the enrichment step that creates those columns is
+   skipped. We do not modify the released code. We instead run the pipeline's DEFAULT
+   full-featured path (gold-answer features enabled), supplying `--verified-jsonl`
+   built mechanically from the public nebius/SWE-rebench instance metadata (100%
+   coverage of the 6,306 instances; fields mapped 1:1 to the SWE-bench-verified schema
+   the code parses; `difficulty` is absent upstream and becomes the constant
+   `__MISSING__`). This strengthens, not weakens, the system under test: gold-answer
+   features are constant within an instance, so they can raise pooled discrimination
+   but cannot contribute within-task signal.
+3. Executed invocation (full run): `SWE_PREFIX_SKIP_INSTANCE_DEDUP=1 python run_all.py
+   --data-dir <converted C2> --split-by instance --verified-jsonl <public metadata
+   jsonl> --skip-ablation --no-gpu-lgbm --run-name e6_full`. The `--split-by instance`
+   task-holdout split is the registered by-task robustness variant; the paper's
+   leave-one-agent-out protocol is unavailable on C2 (a single acting model).
+The decision rule above is UNCHANGED and was fixed before any predictions existed;
+no model had been trained when this amendment was registered.
