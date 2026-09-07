@@ -52,6 +52,9 @@ Scripts expect them under `data/`; see `data/README.md`.
 | E1: within-unit training objective (pre-registered) | `99_within_objective.py` |
 | E2: required within-task AUROC sweep (pre-registered) | `100_required_within.py` |
 | E3: leaderboard-moment difficulty ceilings | `101_leaderboard_ceiling.py` |
+| E1-P: within-objective probes (pre-registered) | `102_within_objective_probe.py` |
+| E1-C2: within-objective on C2 (pre-registered) | `103_within_objective_c2.py` |
+| M-r: standardized mixed-outcome rates | `104_standardized_mixedness.py` |
 
 ## Expected headline outputs
 - test A: pooled > 0.65 with within = 0.500 exactly

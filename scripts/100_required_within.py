@@ -32,6 +32,9 @@ ap.add_argument("--tune-trials", type=int, default=30)
 ap.add_argument("--quantiles", type=float, nargs="+",
                 default=[0.50, 0.60, 0.70, 0.80, 0.90, 0.95])
 ap.add_argument("--split-seed", type=int, default=42)
+ap.add_argument("--task-weight", type=float, default=0.0,
+                help=">0: family B - add task-level component (transferred-prior fail "
+                     "rate x weight), no unit demeaning")
 ap.add_argument("--out", default=None)
 a = ap.parse_args()
 
@@ -75,8 +78,10 @@ def q_prior(t, w=1.0):
     s = sum(qwen[t]); n = len(qwen[t])
     return 1.0 + w * s, 1.0 + w * (n - s)
 
-def make_scores(target, seed):
-    """Fixed synthetic score table: within-unit separation d', unit-demeaned."""
+def make_scores(target, seed, tw=0.0):
+    """Fixed synthetic score table: within-unit separation d'.
+    tw=0 (family A): unit-demeaned, zero between-unit component.
+    tw>0 (family B): plus tw * transferred-prior failure rate, NOT demeaned."""
     rng = np.random.default_rng(seed)
     if target >= 0.999:
         dprime = None                       # deterministic
@@ -89,9 +94,24 @@ def make_scores(target, seed):
             s = ys * 4.0
         else:
             s = (ys - 0.5) * dprime + rng.standard_normal(len(ys))
-        s -= s.mean()                       # kill the between-unit component
+        if tw > 0:
+            qhat = 1.0 - sum(qwen[t]) / len(qwen[t])   # transferred fail rate
+            s = s + tw * qhat
+        else:
+            s -= s.mean()                   # kill the between-unit component
         SC[t] = {i: float(v) for i, v in enumerate(s)}
     return SC
+
+def pooled_auc(SC, pool):
+    ss, yy = [], []
+    for t in pool:
+        for i, r in enumerate(runs[t]):
+            ss.append(SC[t][i]); yy.append(1 - r["succ"])
+    ss = np.array(ss); yy = np.array(yy)
+    P, N = ss[yy == 1], ss[yy == 0]
+    rng2 = np.random.default_rng(1)
+    ii = rng2.integers(0, len(P), 200_000); jj = rng2.integers(0, len(N), 200_000)
+    return float(((P[ii] > N[jj]) + 0.5 * (P[ii] == N[jj])).mean())
 
 def within_auc(SC, pool):
     num = den = 0.0
@@ -144,10 +164,11 @@ for B in a.budgets:
           f"round-robin={base[('uniform',B)].mean():.1f}", flush=True)
 
 for li, target in enumerate(a.targets):
-    SC = make_scores(target, 1000 + li)
+    SC = make_scores(target, 1000 + li, tw=getattr(a, "task_weight"))
     aw_eval = within_auc(SC, EVAL); aw_tune = within_auc(SC, TUNE)
-    print(f"\n=== target within {target:.2f} | achieved EVAL {aw_eval:.3f} "
-          f"TUNE {aw_tune:.3f} ===", flush=True)
+    pa = pooled_auc(SC, EVAL)
+    print(f"\n=== target within {target:.2f} | achieved EVAL within {aw_eval:.3f} "
+          f"pooled {pa:.3f} | TUNE {aw_tune:.3f} ===", flush=True)
     tune_scores = np.array([SC[t][i] for t in TUNE for i in range(len(runs[t]))])
     CAND = {q: float(np.quantile(tune_scores, q)) for q in a.quantiles}
     for B in a.budgets:
