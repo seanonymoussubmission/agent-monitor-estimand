@@ -79,3 +79,24 @@ flat null hides.
 Subsample every corpus outcome table to a common r (3; and 5 where supported) many times;
 report the expected observed mixed fraction with CIs. Descriptive; no decision rule
 beyond reporting the standardized numbers next to the raw ones.
+
+## E6 - A published system's own released pipeline under the within-task estimand
+Registered before running. EarlyEval (arXiv:2609.02783) releases its complete pipeline
+(MIT; feature engineering, dual-head LightGBM, evaluation) but not its trajectory data.
+We run the RELEASED PIPELINE UNCHANGED on public repeated-run SWE corpora (C1
+SWE-agent-trajectories; C2 SWE-rebench if the adapter generalizes), using the paper's own
+leave-one-agent-out protocol where the corpus supports it (C1: three acting models),
+plus a GroupKFold-by-task robustness variant. We report pooled AUROC/accuracy alongside
+pair-weighted within-task AUROC, the same-unit weight w, and within-unit permutation
+tests, at the pipeline's own step checkpoints; controls: within-unit label shuffle
+(expect ~0.5) and an injected outcome feature (expect ~1.0).
+Decision rule, stated in advance:
+- If the released pipeline shows high pooled discrimination but within-task near the
+  corpus baselines (~0.5 early, rising only late), the paper's central claim is
+  demonstrated for the first time on a published system's own implementation, with no
+  reimplementation step, and we will report it as such.
+- If within-task is substantially high at early steps, we will report that plainly as a
+  positive capability of their feature family, note it does not contradict their own
+  benchmark-efficiency (Goal-B) objective, and weaken our early-null scope accordingly.
+- Adapter failures or schema mismatches will be reported as such, not silently dropped.
+Only public artifacts are used; the authors are not contacted.
