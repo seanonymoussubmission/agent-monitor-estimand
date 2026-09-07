@@ -51,3 +51,31 @@ plainly as evidence the predictor carries information beyond single-model diffic
   rather than submitting a partial version.
 - E5 (token-level uncertainty on C4): cached probe archives contain hidden states but
   not logits; recomputation requires full teacher-forced replay. Deferred.
+
+## Amendment (registered before running, after E1/E2/E3 completed)
+
+### E2-B - Mixed-signal synthetic monitors (script 100, --task-weight)
+Same harness and targets as E2, but the synthetic score adds a task-level component
+(the unit's transferred-prior failure rate, scaled) to the run-level part, WITHOUT unit
+demeaning, so the monitor also carries realistic between-unit signal (achieved pooled and
+within verified per table). Decision rule: we report whether the hybrid-minus-allocation
+crossing moves relative to family A. The paper's prediction, stated in advance: it does
+not move materially, because allocation already holds the task-level information.
+
+### E1-P - Within-objective probes (script 102)
+The E1 comparison applied to the C4-L hidden-state probes: pooled-objective logistic vs
+same-unit pairwise ranker on the (standardized) 2048-d activations, per layer and prefix,
+same GroupKFold-by-task splits, shuffled-label control. Decision rule as in E1: if the
+within-trained probe stays near the pooled-trained values (well under 0.58 early), the
+probe null is objective-independent; a clear early gain is reported as a positive finding.
+
+### E1-C2 - Within-objective on C2 (script 103)
+E1's three objectives on C2 (SWE-rebench, 1,741 mixed units) with C2's behavioural
+features at k in {2,5,10,20}. Decision rule as in E1; C2's pooled-objective within-task
+values are ~0.50 flat, so the question is whether a within objective finds anything the
+flat null hides.
+
+### M-r - Standardized mixed-outcome rates (script 104)
+Subsample every corpus outcome table to a common r (3; and 5 where supported) many times;
+report the expected observed mixed fraction with CIs. Descriptive; no decision rule
+beyond reporting the standardized numbers next to the raw ones.
