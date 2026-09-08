@@ -152,3 +152,24 @@ The decision rule of the original registration is UNCHANGED. No model has been t
 on C2 at this scale when this amendment is registered; the only trained models to date
 are the 2,000-trajectory smoke run's, whose test split contained 6 mixed units and
 decided nothing.
+
+### E6 amendment 3 (registered while fold 1 was mid-pipeline, before any fold-1
+### prediction, training completion, or evaluation output existed)
+The amendment-2 shard is hereby fold 1 of a full grouped 5-fold protocol. The
+remaining 5,045 instances are partitioned into folds 2-5 by a seeded shuffle (numpy
+default_rng seed 43) over the sorted remainder, split into four near-equal chunks
+(1262/1261/1261/1261). All five instance lists are committed in
+`preregistered/e6_folds/fold{1..5}.txt`; the five folds are disjoint and cover all
+6,306 instances. Each fold runs the identical released-pipeline invocation of
+amendment 2 (own --skip flags; per-fold stream-filtered prefix table; per-fold
+--run-name), strictly sequentially (memory forbids overlap).
+Aggregation, fixed in advance:
+- Within-task AUROC: same-unit discordant-pair counts (numerator and denominator)
+  are SUMMED across folds; within-task comparisons never cross folds or models.
+  The within-unit permutation test aggregates the same way.
+- Pooled AUROC: computed per fold (scores from different trained models are never
+  compared); reported as per-fold values and mean +/- sd across folds.
+- Per-fold results are reported individually as five replications alongside the
+  aggregate; a fold whose pipeline fails is reported as failed, not resampled.
+The decision rule of the original registration applies to the aggregate and is
+UNCHANGED. Fold 1's result will be read only after this amendment is pushed.

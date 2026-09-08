@@ -15,21 +15,27 @@ ap.add_argument("--out", required=True)
 ap.add_argument("--instances-out", required=True)
 ap.add_argument("--frac", type=float, default=0.2)
 ap.add_argument("--seed", type=int, default=42)
+ap.add_argument("--instances-file", default=None,
+                help="pre-registered instance list; skips sampling")
 a = ap.parse_args()
 
 parts = sorted(glob.glob(os.path.join(a.parts_dir, "prefix_table.part-*.parquet")))
 print(f"[parts] {len(parts)}", flush=True)
 
-ids = set()
-for p in parts:
-    ids.update(pq.read_table(p, columns=["instance_id"])["instance_id"].to_pylist())
-ids = sorted(ids)
-rng = np.random.default_rng(a.seed)
-keep = sorted(rng.choice(ids, size=round(a.frac * len(ids)), replace=False))
+if a.instances_file:
+    keep = sorted(l.strip() for l in open(a.instances_file) if l.strip())
+    print(f"[list] {len(keep)} instances from {a.instances_file}", flush=True)
+else:
+    ids = set()
+    for p in parts:
+        ids.update(pq.read_table(p, columns=["instance_id"])["instance_id"].to_pylist())
+    ids = sorted(ids)
+    rng = np.random.default_rng(a.seed)
+    keep = sorted(rng.choice(ids, size=round(a.frac * len(ids)), replace=False))
+    print(f"[sample] {len(keep)} of {len(ids)} instances (frac={a.frac}, seed={a.seed})",
+          flush=True)
 with open(a.instances_out, "w") as f:
     f.write("\n".join(keep) + "\n")
-print(f"[sample] {len(keep)} of {len(ids)} instances (frac={a.frac}, seed={a.seed})",
-      flush=True)
 
 keep_set = set(keep)
 writer, rows, trajs = None, 0, set()
