@@ -126,3 +126,29 @@ Facts found during the smoke run, recorded per the rule above:
    leave-one-agent-out protocol is unavailable on C2 (a single acting model).
 The decision rule above is UNCHANGED and was fixed before any predictions existed;
 no model had been trained when this amendment was registered.
+
+### E6 amendment 2 (registered after the full-corpus attempt was OOM-killed, before any
+### model training on C2 at scale)
+The full-corpus run completed Phases 1-2 (all 67,074 trajectories; 4,383,830 prefix
+samples streamed to 88 on-disk parts over 17.4 h) and was then SIGKILLed (rc=137) by
+the OOM killer inside the released code's part-concatenation step. Measured cause: one
+50,003-row part occupies 14.13 GB as a pandas DataFrame, so the full prefix table is
+~1.24 TB in RAM - larger than the largest available machine (1.13 TB, shared) - before
+any downstream phase's working copies. The full corpus is therefore infeasible through
+the released monolithic pipeline on available hardware; this is reported as a scale
+finding, not silently reduced.
+Registered reduction: a uniform random 20% of the 6,306 instances (1,261 instances,
+numpy default_rng seed 42 over the sorted instance list; the drawn list is committed in
+the artifact), keeping ALL trajectories of every sampled instance (instance-level
+sampling preserves the within-task repeat structure; expected ~13.4k trajectories).
+Execution: the existing on-disk parts - produced by the released code, untouched - are
+stream-filtered (constant-memory pyarrow pass, no row edited or reordered) to the
+sampled instances and written to the path the released code itself reads
+(`data/prefix_table.parquet`); the pipeline is then resumed with its own
+`--skip-step-table --skip-prefix-table` flags, all other flags as in amendment 1.
+This byte-preserving filter-and-resume is the released code's own resume path; the
+sampling is in the data fed to it, not in its logic.
+The decision rule of the original registration is UNCHANGED. No model has been trained
+on C2 at this scale when this amendment is registered; the only trained models to date
+are the 2,000-trajectory smoke run's, whose test split contained 6 mixed units and
+decided nothing.
