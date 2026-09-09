@@ -1,0 +1,11 @@
+OpenTimestamps manifest for pre-registration provenance (agent-monitor-estimand)
+Created: 2026-09-09T13:38:47Z
+PREREGISTRATION.md sha256: 399d7f09d10cfd5117b36764141d1dd8b728edf020ab44a716486ef107bf5f00
+Commits touching PREREGISTRATION.md (hash, author date, subject):
+4c25acad4ff9f985678cebcab72ccd4007090b1e 2026-09-08 18:08:12 -0400 E6 amendment 3: grouped 5-fold protocol registered before fold-1 results; committed disjoint fold instance lists covering all 6306 instances; filter list-mode and fold generator
+f699ac426335179cb6e2e2fe4c000b44d79033cb 2026-09-08 17:40:18 -0400 E6 amendments: released reference-free path crash finding, default-path invocation with public gold metadata, OOM-measured full-corpus infeasibility, registered 20% instance shard with stream-filter resume; sync scripts 100-107
+e0270a38e22c895fdce0c900b5fe5d958ab9eaa0 2026-09-07 19:42:52 -0400 E6 amendment: C1 adapter incompatibility, released reference-free flag crashes as shipped (unconditional gold feature-name concatenation), executed invocation = default gold-answer path with public-metadata JSONL; decision rule unchanged. Sync extension scripts 100-105b.
+b03f2e30009a010eec5b0b35da45428c201b2672 2026-09-07 18:52:44 -0400 Pre-register E6: EarlyEval released pipeline evaluated under the within-task estimand on public repeated-run corpora
+e15a1af99547105bf83a1da070a40e3104483f58 2026-09-07 10:50:55 -0400 Pre-register experiment extensions: mixed-signal monitors, within-objective probes and C2, standardized mixedness
+0837695212f8587706d373a9d4d4483fd93684d4 2026-09-07 01:38:42 -0400 Pre-register decision rules for within-objective, required-AUROC, and ceiling experiments
+HEAD: 378bf7a9336b7f8030bfe7e357c9675010ec874e
