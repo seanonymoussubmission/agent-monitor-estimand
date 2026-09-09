@@ -173,3 +173,37 @@ Aggregation, fixed in advance:
   aggregate; a fold whose pipeline fails is reported as failed, not resampled.
 The decision rule of the original registration applies to the aggregate and is
 UNCHANGED. Fold 1's result will be read only after this amendment is pushed.
+
+## E7 - A second released system, opposite training paradigm
+Registered after E6 fold 1's results were known and before any E7 execution; E7's
+decision rule is fixed here, in advance, and E6's outcome does not alter it.
+System: the released real-time failure-detection monitor of arXiv:2608.02464
+(github.com/sunnydubey1111/agent-trajectory-sentinel, Apache-2.0): a one-class
+echo-state-network ensemble with CUSUM alarms, trained ONLY on healthy (successful)
+episodes - the opposite training paradigm to E6's supervised LightGBM, and by
+construction immune to any under-training objection about failure labels.
+Protocol:
+- Corpus: the E6 fold-1 instance shard of C2, converted to the system's trace format
+  through its own real-trace import path (derail/telemetry/adapter.py,
+  episode_from_trace); token-logprob and latency channels are absent from C2 and are
+  declared missing via the system's native missing-channel mechanism
+  (logprobs_available=false, sentinel values), never fabricated.
+- Split: the identical instance-level train/test partition E6 fold 1 used (read from
+  its emitted predictions table), so both released systems are scored on the same 190
+  held-out instances.
+- Training: the system's own deployment recipe - fit on healthy episodes from TRAIN
+  instances only, thresholds calibrated per its released calibration code; no
+  modification to the released code.
+- Evaluation: the monitor's per-step alarm/health score as the predictor; pooled and
+  pair-weighted within-task AUROC at the same step checkpoints as E6 plus end of run;
+  within-unit permutation tests; label-as-score and within-unit shuffle controls.
+Decision rule (fixed in advance, mirroring E6):
+- High pooled discrimination with early within-task near baseline: the central claim
+  is demonstrated on a SECOND published system's own implementation, under a training
+  paradigm disjoint from E6's, and will be reported as such.
+- Substantially high early within-task: reported plainly as a positive capability of
+  one-class telemetry monitoring, and the paper's early-null scope weakened
+  accordingly.
+- Adapter failures, schema mismatches, or missing-channel degradation are reported as
+  such, not silently dropped.
+Only public artifacts are used; the authors are not contacted.
