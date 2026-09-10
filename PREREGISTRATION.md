@@ -207,3 +207,26 @@ Decision rule (fixed in advance, mirroring E6):
 - Adapter failures, schema mismatches, or missing-channel degradation are reported as
   such, not silently dropped.
 Only public artifacts are used; the authors are not contacted.
+
+## E6-P - Power and equivalence for the within-task null (registered before running)
+Registered as a re-analysis of predictions already produced by E6; no new pipeline runs
+and no new model fits. The concern addressed is stated plainly: within-task AUROC is
+estimated on mixed-outcome units only (tens per fold), while pooled AUROC uses all
+pairs, so an early within-task value near 0.5 could in principle reflect low power
+rather than absent signal.
+For each checkpoint, on the real unit structure of the E6 test splits (folds pooled by
+summing same-unit pair counts, folds being disjoint in instances):
+- Observed pair-weighted within-task AUROC with a 95% unit-bootstrap CI.
+- Empirical minimum detectable effect: synthetic scores of controlled within-unit
+  separation (d' = sqrt(2) Phi^-1(target), the E2 construction) injected into the same
+  units, scored by the same two-sided test against the analytic permutation null SD;
+  MDE is the smallest target detected in >= 80% of 2000 draws.
+- An equivalence bound: the smallest delta for which |A_within - 0.5| < delta holds at
+  95% bootstrap support.
+Reporting rule, fixed in advance: the MDE and the equivalence bound are reported
+whatever they are, including if the MDE turns out to lie ABOVE values we would have
+wished to exclude - in which case the early null is reported as underpowered at that
+checkpoint rather than as evidence of absence. The step-1 result is exempt from this
+analysis and reported as exact: when every run of a unit receives an identical score,
+within-task AUROC is 0.5 by definition, with no sampling error.
+Script: 111_within_power.py.
