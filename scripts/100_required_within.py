@@ -32,6 +32,10 @@ ap.add_argument("--tune-trials", type=int, default=30)
 ap.add_argument("--quantiles", type=float, nargs="+",
                 default=[0.50, 0.60, 0.70, 0.80, 0.90, 0.95])
 ap.add_argument("--split-seed", type=int, default=42)
+ap.add_argument("--corr", type=float, default=0.0,
+                help=">0: family D - per-task noise sd scales with standardized task "
+                     "difficulty (rho); d' is recalibrated by bisection so the achieved "
+                     "aggregate within-task AUROC still hits each target")
 ap.add_argument("--task-weight", type=float, default=0.0,
                 help=">0: family B - add task-level component (transferred-prior fail "
                      "rate x weight), no unit demeaning")
@@ -78,22 +82,15 @@ def q_prior(t, w=1.0):
     s = sum(qwen[t]); n = len(qwen[t])
     return 1.0 + w * s, 1.0 + w * (n - s)
 
-def make_scores(target, seed, tw=0.0):
-    """Fixed synthetic score table: within-unit separation d'.
-    tw=0 (family A): unit-demeaned, zero between-unit component.
-    tw>0 (family B): plus tw * transferred-prior failure rate, NOT demeaned."""
-    rng = np.random.default_rng(seed)
-    if target >= 0.999:
-        dprime = None                       # deterministic
-    else:
-        dprime = math.sqrt(2.0) * norm.ppf(target)
+def _build(dprime, tw, sigma_by_task, rng):
     SC = {}
     for t in tasks_all:
         ys = np.array([1 - r["succ"] for r in runs[t]], float)   # 1 = fail
         if dprime is None:
             s = ys * 4.0
         else:
-            s = (ys - 0.5) * dprime + rng.standard_normal(len(ys))
+            sd = sigma_by_task.get(t, 1.0)
+            s = (ys - 0.5) * dprime + sd * rng.standard_normal(len(ys))
         if tw > 0:
             qhat = 1.0 - sum(qwen[t]) / len(qwen[t])   # transferred fail rate
             s = s + tw * qhat
@@ -101,6 +98,34 @@ def make_scores(target, seed, tw=0.0):
             s -= s.mean()                   # kill the between-unit component
         SC[t] = {i: float(v) for i, v in enumerate(s)}
     return SC
+
+
+def make_scores(target, seed, tw=0.0, corr=0.0):
+    """Fixed synthetic score table: within-unit separation d'.
+    tw=0 (family A): unit-demeaned, zero between-unit component.
+    tw>0 (family B): plus tw * transferred-prior failure rate, NOT demeaned.
+    corr>0 (family D): per-task noise sd = 1 + corr * z(task difficulty), so the
+    monitor is systematically worse on some tasks; d' is bisected so the ACHIEVED
+    aggregate within-task AUROC still hits the target (verified per table)."""
+    rng = np.random.default_rng(seed)
+    if target >= 0.999:
+        return _build(None, tw, {}, rng)
+    base = math.sqrt(2.0) * norm.ppf(target)
+    if corr <= 0:
+        return _build(base, tw, {}, rng)
+    q = np.array([1.0 - sum(qwen[t]) / len(qwen[t]) for t in tasks_all])
+    z = (q - q.mean()) / (q.std() + 1e-9)
+    sigma_by_task = {t: float(max(0.2, 1.0 + corr * zz)) for t, zz in zip(tasks_all, z)}
+    lo, hi = base, base * 5.0
+    for _ in range(18):
+        mid = 0.5 * (lo + hi)
+        got = within_auc(_build(mid, tw, sigma_by_task,
+                                np.random.default_rng(seed)), tasks_all)
+        if got < target:
+            lo = mid
+        else:
+            hi = mid
+    return _build(0.5 * (lo + hi), tw, sigma_by_task, np.random.default_rng(seed))
 
 def pooled_auc(SC, pool):
     ss, yy = [], []
@@ -164,7 +189,7 @@ for B in a.budgets:
           f"round-robin={base[('uniform',B)].mean():.1f}", flush=True)
 
 for li, target in enumerate(a.targets):
-    SC = make_scores(target, 1000 + li, tw=getattr(a, "task_weight"))
+    SC = make_scores(target, 1000 + li, tw=getattr(a, "task_weight"), corr=a.corr)
     aw_eval = within_auc(SC, EVAL); aw_tune = within_auc(SC, TUNE)
     pa = pooled_auc(SC, EVAL)
     print(f"\n=== target within {target:.2f} | achieved EVAL within {aw_eval:.3f} "
