@@ -30,13 +30,14 @@ ap.add_argument("--preds", nargs="+", required=True,
                 help="one or more test_predictions parquet files (folds)")
 ap.add_argument("--model", default="prob__K_LightGBM_Dense_Full",
                 help="score column used for the observed value")
-ap.add_argument("--ks", type=int, nargs="+", default=[1, 2, 3, 5, 10, 20, 30])
+ap.add_argument("--ks", type=int, nargs="+", default=[0, 1, 2, 3, 5, 10, 20, 30],
+                help="steps observed; 0 = pre-run")
 ap.add_argument("--targets", type=float, nargs="+",
                 default=[0.52, 0.54, 0.55, 0.56, 0.58, 0.60, 0.62, 0.65, 0.70])
 ap.add_argument("--draws", type=int, default=2000)
 ap.add_argument("--boot", type=int, default=2000)
 ap.add_argument("--perms", type=int, default=600)
-ap.add_argument("--perm-check", type=int, nargs="*", default=[1, 5])
+ap.add_argument("--perm-check", type=int, nargs="*", default=[0, 1, 5])
 ap.add_argument("--seed", type=int, default=0)
 ap.add_argument("--out", default=None)
 a = ap.parse_args()
@@ -109,7 +110,7 @@ print(f"[data] {len(a.preds)} fold(s) | {allp.traj_id.nunique()} trajs | "
 rng = np.random.default_rng(a.seed)
 res = {}
 for k in a.ks:
-    sub = allp[allp["prefix_step_idx"] == k - 1]
+    sub = allp[allp["prefix_step_idx"] == k]
     if not len(sub):
         continue
     units = unit_arrays(sub)
@@ -148,10 +149,10 @@ for k in a.ks:
         pv, esd = perm_p(units, obs, a.perms, rng)
         entry["perm_p"] = pv
         entry["perm_sd"] = esd
-    res[f"step{k}"] = entry
+    res["prerun" if k == 0 else f"obs{k}"] = entry
     extra = (f" | perm p={entry['perm_p']:.3f} (null sd {entry['perm_sd']:.4f} vs "
              f"analytic {sd:.4f})") if "perm_p" in entry else ""
-    print(f"  step{k:<3d} within={obs:.3f} CI[{lo:.3f},{hi:.3f}] "
+    print(f"  {('prerun' if k == 0 else f'obs{k}'):<7s} within={obs:.3f} CI[{lo:.3f},{hi:.3f}] "
           f"{len(units)} units, {pairs:.0f} pairs | null sd {sd:.4f} | "
           f"MDE(80%)={mde if mde else '>max'} | equivalent within +/-{delta:.3f}{extra}",
           flush=True)

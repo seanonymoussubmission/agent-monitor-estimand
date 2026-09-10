@@ -2,7 +2,9 @@
 """E6 analysis: pooled vs pair-weighted within-task AUROC of EarlyEval's released
 pipeline's own test predictions (runs/<run>/reports/test_predictions_all_models.parquet).
 
-Rows are (trajectory, prefix_step_idx). At a fixed checkpoint k each surviving
+Rows are (trajectory, prefix_step_idx). CONVENTION: prefix_step_idx is the NUMBER OF
+STEPS OBSERVED, so index 0 is a pre-run prediction (no run content in the feature
+vector) and index k has seen exactly k steps. At a fixed checkpoint k each surviving
 trajectory contributes exactly one prediction, so no reweighting is needed. Units are
 SWE instances; within-task AUROC is pair-weighted over units with both outcomes among
 trajectories alive at k; w is the same-unit share of label-discordant pairs. The
@@ -14,7 +16,9 @@ import numpy as np, pandas as pd
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--pred", required=True)
-ap.add_argument("--ks", type=int, nargs="+", default=[1, 2, 3, 5, 10, 20, 30, 50])
+ap.add_argument("--ks", type=int, nargs="+",
+                default=[0, 1, 2, 3, 5, 10, 20, 30, 50],
+                help="steps observed; 0 = pre-run")
 ap.add_argument("--final", action="store_true", default=True,
                 help="also evaluate each trajectory's LAST prediction (end of run)")
 ap.add_argument("--perms", type=int, default=600)
@@ -100,9 +104,9 @@ def eval_at(sub, tag, res, rng):
 res = {}
 rng = np.random.default_rng(0)
 for k in a.ks:
-    sub = df[df["prefix_step_idx"] == k - 1]
+    sub = df[df["prefix_step_idx"] == k]
     if not len(sub): continue
-    eval_at(sub, f"step{k}", res, rng)
+    eval_at(sub, "prerun" if k == 0 else f"obs{k}", res, rng)
 if a.final:
     sub = df.loc[df.groupby("traj_id")["prefix_step_idx"].idxmax()]
     eval_at(sub, "final", res, rng)
