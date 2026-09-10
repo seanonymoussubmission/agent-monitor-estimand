@@ -230,3 +230,51 @@ checkpoint rather than as evidence of absence. The step-1 result is exempt from 
 analysis and reported as exact: when every run of a unit receives an identical score,
 within-task AUROC is 0.5 by definition, with no sampling error.
 Script: 111_within_power.py.
+
+## E2-C / E2-D - Robustness of the deployment requirement curve
+Registered before running. The requirement curve of E2 (the within-task AUROC at which
+aborting begins to add throughput over allocation) currently rests on ONE target corpus
+(C4-L) and on synthetic monitors whose errors are Gaussian and independent of task
+identity. Both are narrow for a number that carries the paper's operational claim, so we
+test the curve's stability in two directions:
+- E2-C (second target): identical harness, targets C4-Q with the prior transferred from
+  C4-L - the reverse of the direction already reported - so the crossing point is
+  estimated on a second acting model.
+- E2-D (correlated errors): monitors whose noise is correlated with task difficulty
+  rather than white, at correlation rho in {0.3, 0.6}, holding the achieved within-task
+  AUROC at each target by construction and verifying it per draw. This is a
+  deliberately less favourable error structure than family A.
+Decision rule, fixed in advance:
+- If the crossing point on the second target and under correlated errors stays within
+  about 0.05 of the reported 0.84-0.93 band, we report the requirement as stable and
+  keep the "order of magnitude short" framing.
+- If it moves materially DOWN, we report the lower value, widen the stated band, and
+  soften that framing accordingly - including if it moves far enough to place measured
+  monitors near usefulness.
+- If it moves UP, we report that too and note the requirement is, if anything,
+  understated.
+Script: 100_required_within.py with new --corr flag; target corpus by existing flags.
+
+## E6-C1 - The released pipeline on a multi-model, second-scaffold corpus
+Registered before running. The E6 result rests on C2, which carries a SINGLE acting
+model (Qwen3-Coder-480B) and a single scaffold (OpenHands); a within-task null on one
+model cannot exclude that a different acting model is more legible early - and our own
+capability finding (rho = -0.66) predicts weaker models would be MORE legible, so the
+single strong model is the conservative case rather than a favourable one. We therefore
+run the released pipeline, again unmodified, on C1 (SWE-agent trajectories: THREE acting
+models, Llama-3 8B/70B/405B, and a different scaffold).
+C1 was excluded at the original E6 registration as an adapter incompatibility. That
+finding is superseded and we say so: C1's assistant turns carry a fenced command block
+in 46/46 sampled messages (a recognisable SWE-agent command token in 45/46), with the
+observation in the following user turn, which maps onto the released step schema the
+same way C2's tool calls did. The adapter is mechanical and content-preserving.
+Protocol: instance-holdout split as in E6, on a seeded random instance shard sized to
+available memory (the shard fraction and seed are committed before running); all runs of
+a sampled instance are kept. Reporting: pooled and pair-weighted within-task AUROC at
+steps observed, PER ACTING MODEL as well as pooled over models, with the same controls
+and permutation tests.
+Decision rule: unchanged from E6, applied per acting model. Additionally, if the three
+models differ materially in early within-task AUROC, we report that difference as a
+finding rather than averaging it away - it would bear directly on the capability trend.
+Scripts: 114_c1_to_earlyeval.py, then the E6 pipeline invocation and 106.
+
