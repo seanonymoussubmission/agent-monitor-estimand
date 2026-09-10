@@ -27,6 +27,9 @@ ap.add_argument("--perm-models", nargs="+", default=[
     "prob__I_LightGBM_Dense_AF", "prob__H_LightGBM_Dense",
     "prob__D_Dense_Full_LR", "prob__G_TfIdf_Full_LR",
     "prob__Abl_ProcessOnly_LightGBM", "prob__Abl_ProcessOnly_LR"])
+ap.add_argument("--unit-cols", nargs="+", default=["instance_id"],
+                help="columns defining a within-task unit; C1 (three acting models) "
+                     "needs: --unit-cols instance_id model")
 ap.add_argument("--out", default=None)
 a = ap.parse_args()
 
@@ -34,7 +37,8 @@ df = pd.read_parquet(a.pred)
 df = df[df["split"] == "test"].copy()
 models = [c for c in df.columns if c.startswith("prob__")]
 print(f"[data] {len(df)} test rows | {df.traj_id.nunique()} trajs | "
-      f"{df.instance_id.nunique()} instances | {len(models)} model columns", flush=True)
+      f"{df.instance_id.nunique()} instances | {len(models)} model columns | "
+      f"unit = {'+'.join(a.unit_cols)}", flush=True)
 
 def within_pooled(u, y, s):
     """pooled AUROC, pair-weighted within AUROC, w, mixed-unit count."""
@@ -72,8 +76,14 @@ def perm_p(u, y, s, B, rng):
         null[b] = num / den
     return obs, float((1 + np.sum(np.abs(null - 0.5) >= abs(obs - 0.5))) / (1 + B))
 
+def unit_key(sub):
+    if len(a.unit_cols) == 1:
+        return sub[a.unit_cols[0]].astype(str).values
+    return sub[a.unit_cols].astype(str).agg("||".join, axis=1).values
+
+
 def eval_at(sub, tag, res, rng):
-    u = sub["instance_id"].values
+    u = unit_key(sub)
     y = sub["label"].values.astype(int)
     if y.min() == y.max():
         print(f"  [{tag}] degenerate labels, skipped", flush=True); return
