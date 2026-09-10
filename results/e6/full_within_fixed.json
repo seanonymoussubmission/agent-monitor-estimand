@@ -1,0 +1,1102 @@
+{
+  "prerun|__controls__": {
+    "label_as_score_within": 1.0,
+    "shuffled_within": 0.5218023255813954,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "prerun|prob__A_Dense_LR": {
+    "pooled": 0.6494266708392512,
+    "within": 0.5,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "prerun|prob__B_Dense_AF_LR": {
+    "pooled": 0.6321295025797806,
+    "within": 0.5,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "prerun|prob__C_Dense_AF_Thought_LR": {
+    "pooled": 0.631123468380636,
+    "within": 0.5,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "prerun|prob__D_Dense_Full_LR": {
+    "pooled": 0.6336711521950201,
+    "within": 0.5,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 1.0
+  },
+  "prerun|prob__E_TfIdf_AF_LR": {
+    "pooled": 0.6325638124583745,
+    "within": 0.5,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "prerun|prob__F_TfIdf_AF_Thought_LR": {
+    "pooled": 0.6237271611179317,
+    "within": 0.5,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "prerun|prob__G_TfIdf_Full_LR": {
+    "pooled": 0.6246810380106401,
+    "within": 0.5,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 1.0
+  },
+  "prerun|prob__H_LightGBM_Dense": {
+    "pooled": 0.6718563186570697,
+    "within": 0.5,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 1.0
+  },
+  "prerun|prob__I_LightGBM_Dense_AF": {
+    "pooled": 0.6687970920295612,
+    "within": 0.5,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 1.0
+  },
+  "prerun|prob__J_LightGBM_Dense_AF_Thought": {
+    "pooled": 0.670505243815347,
+    "within": 0.5,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "prerun|prob__K_LightGBM_Dense_Full": {
+    "pooled": 0.680907617374,
+    "within": 0.5,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 1.0
+  },
+  "prerun|prob__L_LightGBM_TfIdf_AF": {
+    "pooled": 0.5584191922839283,
+    "within": 0.5,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "prerun|prob__M_LightGBM_TfIdf_AF_Thought": {
+    "pooled": 0.5688867624756265,
+    "within": 0.5,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "prerun|prob__N_LightGBM_TfIdf_Full": {
+    "pooled": 0.5948972099853157,
+    "within": 0.5,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 1.0
+  },
+  "obs1|__controls__": {
+    "label_as_score_within": 1.0,
+    "shuffled_within": 0.48691860465116277,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs1|prob__A_Dense_LR": {
+    "pooled": 0.6410840093722667,
+    "within": 0.4738372093023256,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs1|prob__B_Dense_AF_LR": {
+    "pooled": 0.6359209375476437,
+    "within": 0.4728682170542636,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs1|prob__C_Dense_AF_Thought_LR": {
+    "pooled": 0.6393201896921115,
+    "within": 0.46608527131782945,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs1|prob__D_Dense_Full_LR": {
+    "pooled": 0.6467957359395938,
+    "within": 0.48255813953488375,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.6256239600665557
+  },
+  "obs1|prob__E_TfIdf_AF_LR": {
+    "pooled": 0.6318556767209905,
+    "within": 0.5242248062015504,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs1|prob__F_TfIdf_AF_Thought_LR": {
+    "pooled": 0.5987132190687112,
+    "within": 0.5087209302325582,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs1|prob__G_TfIdf_Full_LR": {
+    "pooled": 0.6395478763952079,
+    "within": 0.47771317829457366,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.5207986688851913
+  },
+  "obs1|prob__H_LightGBM_Dense": {
+    "pooled": 0.6710378501560708,
+    "within": 0.4951550387596899,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.7986688851913477
+  },
+  "obs1|prob__I_LightGBM_Dense_AF": {
+    "pooled": 0.6690302953708385,
+    "within": 0.5314922480620154,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.26455906821963393
+  },
+  "obs1|prob__J_LightGBM_Dense_AF_Thought": {
+    "pooled": 0.6775209030435795,
+    "within": 0.5140503875968992,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs1|prob__K_LightGBM_Dense_Full": {
+    "pooled": 0.6827190807475345,
+    "within": 0.5155038759689923,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.1713810316139767
+  },
+  "obs1|prob__L_LightGBM_TfIdf_AF": {
+    "pooled": 0.5867360960657343,
+    "within": 0.5285852713178295,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs1|prob__M_LightGBM_TfIdf_AF_Thought": {
+    "pooled": 0.5934192524654358,
+    "within": 0.49079457364341084,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs1|prob__N_LightGBM_TfIdf_Full": {
+    "pooled": 0.5947196745384078,
+    "within": 0.4757751937984496,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.4193011647254576
+  },
+  "obs2|__controls__": {
+    "label_as_score_within": 1.0,
+    "shuffled_within": 0.5121124031007752,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs2|prob__A_Dense_LR": {
+    "pooled": 0.6296861333782688,
+    "within": 0.47093023255813954,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs2|prob__B_Dense_AF_LR": {
+    "pooled": 0.6229879316017107,
+    "within": 0.4273255813953488,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs2|prob__C_Dense_AF_Thought_LR": {
+    "pooled": 0.6246850501111352,
+    "within": 0.4428294573643411,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs2|prob__D_Dense_Full_LR": {
+    "pooled": 0.6283220192099371,
+    "within": 0.4476744186046512,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.15474209650582363
+  },
+  "obs2|prob__E_TfIdf_AF_LR": {
+    "pooled": 0.6083613177342866,
+    "within": 0.5465116279069767,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs2|prob__F_TfIdf_AF_Thought_LR": {
+    "pooled": 0.6102685700071415,
+    "within": 0.47093023255813954,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs2|prob__G_TfIdf_Full_LR": {
+    "pooled": 0.6203991237572519,
+    "within": 0.4786821705426357,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.5607321131447587
+  },
+  "obs2|prob__H_LightGBM_Dense": {
+    "pooled": 0.6722540181186458,
+    "within": 0.4946705426356589,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.6821963394342762
+  },
+  "obs2|prob__I_LightGBM_Dense_AF": {
+    "pooled": 0.6660929362958683,
+    "within": 0.5038759689922481,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.9034941763727121
+  },
+  "obs2|prob__J_LightGBM_Dense_AF_Thought": {
+    "pooled": 0.6806914654598268,
+    "within": 0.5479651162790697,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs2|prob__K_LightGBM_Dense_Full": {
+    "pooled": 0.6811082223987547,
+    "within": 0.5058139534883721,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.7138103161397671
+  },
+  "obs2|prob__L_LightGBM_TfIdf_AF": {
+    "pooled": 0.597306977845181,
+    "within": 0.5111434108527132,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs2|prob__M_LightGBM_TfIdf_AF_Thought": {
+    "pooled": 0.5974559270760614,
+    "within": 0.5184108527131783,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs2|prob__N_LightGBM_TfIdf_Full": {
+    "pooled": 0.5947773484830248,
+    "within": 0.5692829457364341,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.028286189683860232
+  },
+  "obs3|__controls__": {
+    "label_as_score_within": 1.0,
+    "shuffled_within": 0.5591085271317829,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs3|prob__A_Dense_LR": {
+    "pooled": 0.6335517922052911,
+    "within": 0.4496124031007752,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs3|prob__B_Dense_AF_LR": {
+    "pooled": 0.6251223690651003,
+    "within": 0.4021317829457364,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs3|prob__C_Dense_AF_Thought_LR": {
+    "pooled": 0.6257402325413447,
+    "within": 0.3963178294573643,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs3|prob__D_Dense_Full_LR": {
+    "pooled": 0.6290973576306139,
+    "within": 0.38856589147286824,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.0033277870216306157
+  },
+  "obs3|prob__E_TfIdf_AF_LR": {
+    "pooled": 0.6148132768429584,
+    "within": 0.5406976744186046,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs3|prob__F_TfIdf_AF_Thought_LR": {
+    "pooled": 0.6147721528128837,
+    "within": 0.45930232558139533,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs3|prob__G_TfIdf_Full_LR": {
+    "pooled": 0.6133097421824222,
+    "within": 0.4786821705426357,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.5790349417637272
+  },
+  "obs3|prob__H_LightGBM_Dense": {
+    "pooled": 0.6714235133161616,
+    "within": 0.49079457364341084,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.6023294509151415
+  },
+  "obs3|prob__I_LightGBM_Dense_AF": {
+    "pooled": 0.6656240220505043,
+    "within": 0.5188953488372093,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.5474209650582362
+  },
+  "obs3|prob__J_LightGBM_Dense_AF_Thought": {
+    "pooled": 0.6811257753384207,
+    "within": 0.5266472868217055,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs3|prob__K_LightGBM_Dense_Full": {
+    "pooled": 0.6812070203734463,
+    "within": 0.48207364341085274,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.33943427620632277
+  },
+  "obs3|prob__L_LightGBM_TfIdf_AF": {
+    "pooled": 0.5888138626096306,
+    "within": 0.5125968992248062,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs3|prob__M_LightGBM_TfIdf_AF_Thought": {
+    "pooled": 0.598767382425395,
+    "within": 0.4888565891472868,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs3|prob__N_LightGBM_TfIdf_Full": {
+    "pooled": 0.5985722940388211,
+    "within": 0.5552325581395349,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.11314475873544093
+  },
+  "obs5|__controls__": {
+    "label_as_score_within": 1.0,
+    "shuffled_within": 0.499031007751938,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs5|prob__A_Dense_LR": {
+    "pooled": 0.6294674739012863,
+    "within": 0.5038759689922481,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs5|prob__B_Dense_AF_LR": {
+    "pooled": 0.6207120675958692,
+    "within": 0.47093023255813954,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs5|prob__C_Dense_AF_Thought_LR": {
+    "pooled": 0.6218153952320198,
+    "within": 0.47093023255813954,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs5|prob__D_Dense_Full_LR": {
+    "pooled": 0.6260591945307046,
+    "within": 0.46608527131782945,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.36938435940099834
+  },
+  "obs5|prob__E_TfIdf_AF_LR": {
+    "pooled": 0.5627798440095327,
+    "within": 0.5683139534883721,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs5|prob__F_TfIdf_AF_Thought_LR": {
+    "pooled": 0.5824326167721849,
+    "within": 0.45251937984496127,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs5|prob__G_TfIdf_Full_LR": {
+    "pooled": 0.5993225568314036,
+    "within": 0.4893410852713178,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.800332778702163
+  },
+  "obs5|prob__H_LightGBM_Dense": {
+    "pooled": 0.6681686967895172,
+    "within": 0.5062984496124031,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.6405990016638935
+  },
+  "obs5|prob__I_LightGBM_Dense_AF": {
+    "pooled": 0.6671947593943333,
+    "within": 0.49757751937984496,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.9450915141430949
+  },
+  "obs5|prob__J_LightGBM_Dense_AF_Thought": {
+    "pooled": 0.6839041549312728,
+    "within": 0.5499031007751938,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs5|prob__K_LightGBM_Dense_Full": {
+    "pooled": 0.6819156576233921,
+    "within": 0.5164728682170543,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.3777038269550749
+  },
+  "obs5|prob__L_LightGBM_TfIdf_AF": {
+    "pooled": 0.5960236071993131,
+    "within": 0.5397286821705426,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs5|prob__M_LightGBM_TfIdf_AF_Thought": {
+    "pooled": 0.6127976978567359,
+    "within": 0.5382751937984496,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs5|prob__N_LightGBM_TfIdf_Full": {
+    "pooled": 0.5983446073357246,
+    "within": 0.562015503875969,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.051580698835274545
+  },
+  "obs10|__controls__": {
+    "label_as_score_within": 1.0,
+    "shuffled_within": 0.44137596899224807,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs10|prob__A_Dense_LR": {
+    "pooled": 0.6452545878369161,
+    "within": 0.4874031007751938,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs10|prob__B_Dense_AF_LR": {
+    "pooled": 0.6424175312743233,
+    "within": 0.44089147286821706,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs10|prob__C_Dense_AF_Thought_LR": {
+    "pooled": 0.6439130417338693,
+    "within": 0.44670542635658916,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs10|prob__D_Dense_Full_LR": {
+    "pooled": 0.648205989263619,
+    "within": 0.44089147286821706,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.11148086522462562
+  },
+  "obs10|prob__E_TfIdf_AF_LR": {
+    "pooled": 0.6213570127504554,
+    "within": 0.4932170542635659,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs10|prob__F_TfIdf_AF_Thought_LR": {
+    "pooled": 0.6432831419561397,
+    "within": 0.4428294573643411,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs10|prob__G_TfIdf_Full_LR": {
+    "pooled": 0.6413944456480746,
+    "within": 0.47189922480620156,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.4492512479201331
+  },
+  "obs10|prob__H_LightGBM_Dense": {
+    "pooled": 0.6677434141370373,
+    "within": 0.4898255813953488,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.6372712146422629
+  },
+  "obs10|prob__I_LightGBM_Dense_AF": {
+    "pooled": 0.673762066392239,
+    "within": 0.501937984496124,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.9600665557404326
+  },
+  "obs10|prob__J_LightGBM_Dense_AF_Thought": {
+    "pooled": 0.6844227189202635,
+    "within": 0.5915697674418605,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs10|prob__K_LightGBM_Dense_Full": {
+    "pooled": 0.6886895877967951,
+    "within": 0.5305232558139535,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.1896838602329451
+  },
+  "obs10|prob__L_LightGBM_TfIdf_AF": {
+    "pooled": 0.6573239891512802,
+    "within": 0.5469961240310077,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs10|prob__M_LightGBM_TfIdf_AF_Thought": {
+    "pooled": 0.6581946149587155,
+    "within": 0.560562015503876,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs10|prob__N_LightGBM_TfIdf_Full": {
+    "pooled": 0.6310773292249424,
+    "within": 0.5552325581395349,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.11314475873544093
+  },
+  "obs20|__controls__": {
+    "label_as_score_within": 1.0,
+    "shuffled_within": 0.4636627906976744,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs20|prob__A_Dense_LR": {
+    "pooled": 0.6455830785649519,
+    "within": 0.5116279069767442,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs20|prob__B_Dense_AF_LR": {
+    "pooled": 0.647684416199257,
+    "within": 0.5145348837209303,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs20|prob__C_Dense_AF_Thought_LR": {
+    "pooled": 0.6499768301196408,
+    "within": 0.5164728682170543,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs20|prob__D_Dense_Full_LR": {
+    "pooled": 0.6553013889891914,
+    "within": 0.5116279069767442,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.7221297836938436
+  },
+  "obs20|prob__E_TfIdf_AF_LR": {
+    "pooled": 0.6412209223016618,
+    "within": 0.5174418604651163,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs20|prob__F_TfIdf_AF_Thought_LR": {
+    "pooled": 0.6611751041140078,
+    "within": 0.45155038759689925,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs20|prob__G_TfIdf_Full_LR": {
+    "pooled": 0.6566715213082658,
+    "within": 0.4893410852713178,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.7870216306156406
+  },
+  "obs20|prob__H_LightGBM_Dense": {
+    "pooled": 0.6706055463277244,
+    "within": 0.5290697674418605,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.19633943427620631
+  },
+  "obs20|prob__I_LightGBM_Dense_AF": {
+    "pooled": 0.6753995049067989,
+    "within": 0.4878875968992248,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.6755407653910149
+  },
+  "obs20|prob__J_LightGBM_Dense_AF_Thought": {
+    "pooled": 0.6901861012814648,
+    "within": 0.5421511627906976,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs20|prob__K_LightGBM_Dense_Full": {
+    "pooled": 0.6892066472481003,
+    "within": 0.5348837209302325,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.16139767054908485
+  },
+  "obs20|prob__L_LightGBM_TfIdf_AF": {
+    "pooled": 0.6652458815788418,
+    "within": 0.499515503875969,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs20|prob__M_LightGBM_TfIdf_AF_Thought": {
+    "pooled": 0.6802230527270247,
+    "within": 0.500484496124031,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "obs20|prob__N_LightGBM_TfIdf_Full": {
+    "pooled": 0.6383522704476702,
+    "within": 0.46705426356589147,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.3577371048252912
+  },
+  "obs30|__controls__": {
+    "label_as_score_within": 1.0,
+    "shuffled_within": 0.48484848484848486,
+    "mixed_units": 42,
+    "trajs": 2003
+  },
+  "obs30|prob__A_Dense_LR": {
+    "pooled": 0.6553147055746465,
+    "within": 0.5063538611925709,
+    "w": 0.0010291005078102995,
+    "mixed_units": 42,
+    "trajs": 2003
+  },
+  "obs30|prob__B_Dense_AF_LR": {
+    "pooled": 0.6642617436161565,
+    "within": 0.5395894428152492,
+    "w": 0.0010291005078102995,
+    "mixed_units": 42,
+    "trajs": 2003
+  },
+  "obs30|prob__C_Dense_AF_Thought_LR": {
+    "pooled": 0.6668500873176189,
+    "within": 0.5317693059628543,
+    "w": 0.0010291005078102995,
+    "mixed_units": 42,
+    "trajs": 2003
+  },
+  "obs30|prob__D_Dense_Full_LR": {
+    "pooled": 0.6711566164221505,
+    "within": 0.5356793743890518,
+    "w": 0.0010291005078102995,
+    "mixed_units": 42,
+    "trajs": 2003,
+    "perm_p": 0.34608985024958405
+  },
+  "obs30|prob__E_TfIdf_AF_LR": {
+    "pooled": 0.6582873272760926,
+    "within": 0.4946236559139785,
+    "w": 0.0010291005078102995,
+    "mixed_units": 42,
+    "trajs": 2003
+  },
+  "obs30|prob__F_TfIdf_AF_Thought_LR": {
+    "pooled": 0.6905596375312855,
+    "within": 0.48191593352883677,
+    "w": 0.0010291005078102995,
+    "mixed_units": 42,
+    "trajs": 2003
+  },
+  "obs30|prob__G_TfIdf_Full_LR": {
+    "pooled": 0.6765264487884177,
+    "within": 0.5288367546432062,
+    "w": 0.0010291005078102995,
+    "mixed_units": 42,
+    "trajs": 2003,
+    "perm_p": 0.4459234608985025
+  },
+  "obs30|prob__H_LightGBM_Dense": {
+    "pooled": 0.6714176639116683,
+    "within": 0.5087976539589443,
+    "w": 0.0010291005078102995,
+    "mixed_units": 42,
+    "trajs": 2003,
+    "perm_p": 0.6905158069883528
+  },
+  "obs30|prob__I_LightGBM_Dense_AF": {
+    "pooled": 0.677138577487345,
+    "within": 0.5087976539589443,
+    "w": 0.0010291005078102995,
+    "mixed_units": 42,
+    "trajs": 2003,
+    "perm_p": 0.7770382695507487
+  },
+  "obs30|prob__J_LightGBM_Dense_AF_Thought": {
+    "pooled": 0.6932435477510683,
+    "within": 0.5562072336265884,
+    "w": 0.0010291005078102995,
+    "mixed_units": 42,
+    "trajs": 2003
+  },
+  "obs30|prob__K_LightGBM_Dense_Full": {
+    "pooled": 0.6935403069395376,
+    "within": 0.544477028347996,
+    "w": 0.0010291005078102995,
+    "mixed_units": 42,
+    "trajs": 2003,
+    "perm_p": 0.03826955074875208
+  },
+  "obs30|prob__L_LightGBM_TfIdf_AF": {
+    "pooled": 0.6743591007492415,
+    "within": 0.5175953079178885,
+    "w": 0.0010291005078102995,
+    "mixed_units": 42,
+    "trajs": 2003
+  },
+  "obs30|prob__M_LightGBM_TfIdf_AF_Thought": {
+    "pooled": 0.6928416653924464,
+    "within": 0.5386119257086999,
+    "w": 0.0010291005078102995,
+    "mixed_units": 42,
+    "trajs": 2003
+  },
+  "obs30|prob__N_LightGBM_TfIdf_Full": {
+    "pooled": 0.6396991364810597,
+    "within": 0.5063538611925709,
+    "w": 0.0010291005078102995,
+    "mixed_units": 42,
+    "trajs": 2003,
+    "perm_p": 0.8569051580698835
+  },
+  "obs50|__controls__": {
+    "label_as_score_within": 1.0,
+    "shuffled_within": 0.5104438642297651,
+    "mixed_units": 38,
+    "trajs": 1551
+  },
+  "obs50|prob__A_Dense_LR": {
+    "pooled": 0.6415431792275362,
+    "within": 0.5156657963446475,
+    "w": 0.0013391889340335812,
+    "mixed_units": 38,
+    "trajs": 1551
+  },
+  "obs50|prob__B_Dense_AF_LR": {
+    "pooled": 0.6534158059259985,
+    "within": 0.5378590078328982,
+    "w": 0.0013391889340335812,
+    "mixed_units": 38,
+    "trajs": 1551
+  },
+  "obs50|prob__C_Dense_AF_Thought_LR": {
+    "pooled": 0.6553092022909571,
+    "within": 0.5456919060052219,
+    "w": 0.0013391889340335812,
+    "mixed_units": 38,
+    "trajs": 1551
+  },
+  "obs50|prob__D_Dense_Full_LR": {
+    "pooled": 0.6569158793541123,
+    "within": 0.54177545691906,
+    "w": 0.0013391889340335812,
+    "mixed_units": 38,
+    "trajs": 1551,
+    "perm_p": 0.30282861896838603
+  },
+  "obs50|prob__E_TfIdf_AF_LR": {
+    "pooled": 0.6620925613824066,
+    "within": 0.5718015665796344,
+    "w": 0.0013391889340335812,
+    "mixed_units": 38,
+    "trajs": 1551
+  },
+  "obs50|prob__F_TfIdf_AF_Thought_LR": {
+    "pooled": 0.6876228172619006,
+    "within": 0.5065274151436031,
+    "w": 0.0013391889340335812,
+    "mixed_units": 38,
+    "trajs": 1551
+  },
+  "obs50|prob__G_TfIdf_Full_LR": {
+    "pooled": 0.6519419987831913,
+    "within": 0.5639686684073107,
+    "w": 0.0013391889340335812,
+    "mixed_units": 38,
+    "trajs": 1551,
+    "perm_p": 0.1264559068219634
+  },
+  "obs50|prob__H_LightGBM_Dense": {
+    "pooled": 0.638234543382029,
+    "within": 0.5058746736292428,
+    "w": 0.0013391889340335812,
+    "mixed_units": 38,
+    "trajs": 1551,
+    "perm_p": 0.8552412645590682
+  },
+  "obs50|prob__I_LightGBM_Dense_AF": {
+    "pooled": 0.641876228172619,
+    "within": 0.5868146214099217,
+    "w": 0.0013391889340335812,
+    "mixed_units": 38,
+    "trajs": 1551,
+    "perm_p": 0.019966722129783693
+  },
+  "obs50|prob__J_LightGBM_Dense_AF_Thought": {
+    "pooled": 0.6573433358741791,
+    "within": 0.47715404699738906,
+    "w": 0.0013391889340335812,
+    "mixed_units": 38,
+    "trajs": 1551
+  },
+  "obs50|prob__K_LightGBM_Dense_Full": {
+    "pooled": 0.6626826087260572,
+    "within": 0.5032637075718016,
+    "w": 0.0013391889340335812,
+    "mixed_units": 38,
+    "trajs": 1551,
+    "perm_p": 0.9068219633943427
+  },
+  "obs50|prob__L_LightGBM_TfIdf_AF": {
+    "pooled": 0.6663138037860934,
+    "within": 0.5528720626631853,
+    "w": 0.0013391889340335812,
+    "mixed_units": 38,
+    "trajs": 1551
+  },
+  "obs50|prob__M_LightGBM_TfIdf_AF_Thought": {
+    "pooled": 0.678198668503535,
+    "within": 0.5450391644908616,
+    "w": 0.0013391889340335812,
+    "mixed_units": 38,
+    "trajs": 1551
+  },
+  "obs50|prob__N_LightGBM_TfIdf_Full": {
+    "pooled": 0.6274572193822248,
+    "within": 0.4869451697127937,
+    "w": 0.0013391889340335812,
+    "mixed_units": 38,
+    "trajs": 1551,
+    "perm_p": 0.6871880199667221
+  },
+  "final|__controls__": {
+    "label_as_score_within": 1.0,
+    "shuffled_within": 0.4622093023255814,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "final|prob__A_Dense_LR": {
+    "pooled": 0.6938556686967895,
+    "within": 0.5532945736434108,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "final|prob__B_Dense_AF_LR": {
+    "pooled": 0.7073047310689038,
+    "within": 0.5794573643410853,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "final|prob__C_Dense_AF_Thought_LR": {
+    "pooled": 0.7092751739245564,
+    "within": 0.5813953488372093,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "final|prob__D_Dense_Full_LR": {
+    "pooled": 0.7134146586103689,
+    "within": 0.5784883720930233,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.028286189683860232
+  },
+  "final|prob__E_TfIdf_AF_LR": {
+    "pooled": 0.7216234162233296,
+    "within": 0.6065891472868217,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "final|prob__F_TfIdf_AF_Thought_LR": {
+    "pooled": 0.7540712789773958,
+    "within": 0.5397286821705426,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "final|prob__G_TfIdf_Full_LR": {
+    "pooled": 0.7294510242892563,
+    "within": 0.5852713178294574,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.021630615640599003
+  },
+  "final|prob__H_LightGBM_Dense": {
+    "pooled": 0.6763328197844699,
+    "within": 0.49806201550387597,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.9500831946755408
+  },
+  "final|prob__I_LightGBM_Dense_AF": {
+    "pooled": 0.6830335291238375,
+    "within": 0.5586240310077519,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.04658901830282862
+  },
+  "final|prob__J_LightGBM_Dense_AF_Thought": {
+    "pooled": 0.6928200452564935,
+    "within": 0.5033914728682171,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "final|prob__K_LightGBM_Dense_Full": {
+    "pooled": 0.6998693058263723,
+    "within": 0.5198643410852714,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.3277870216306156
+  },
+  "final|prob__L_LightGBM_TfIdf_AF": {
+    "pooled": 0.7177692921852307,
+    "within": 0.5421511627906976,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "final|prob__M_LightGBM_TfIdf_AF_Thought": {
+    "pooled": 0.7179618730089952,
+    "within": 0.5508720930232558,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006
+  },
+  "final|prob__N_LightGBM_TfIdf_Full": {
+    "pooled": 0.6540481090970367,
+    "within": 0.498546511627907,
+    "w": 0.0010351219277340458,
+    "mixed_units": 42,
+    "trajs": 2006,
+    "perm_p": 0.9667221297836939
+  }
+}

@@ -71,8 +71,10 @@ for r, ep in test_rows:
         scores[f"prob__{m.name}"] = s
     T = len(next(iter(scores.values())))
     for t in range(T):
+        # emit steps-observed convention (t=0 is the score after step 1), matching
+        # EarlyEval's prefix_step_idx semantics so one analysis script serves both
         row = dict(traj_id=r["episode_id"], instance_id=r["instance_id"],
-                   prefix_step_idx=t, label=int(not r["resolved"]), split="test")
+                   prefix_step_idx=t + 1, label=int(not r["resolved"]), split="test")
         for k, v in scores.items():
             row[k] = float(v[t]) if t < len(v) else float(v[-1])
         recs.append(row)
