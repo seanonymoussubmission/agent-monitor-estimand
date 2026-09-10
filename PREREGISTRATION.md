@@ -278,3 +278,31 @@ models differ materially in early within-task AUROC, we report that difference a
 finding rather than averaging it away - it would bear directly on the capability trend.
 Scripts: 114_c1_to_earlyeval.py, then the E6 pipeline invocation and 106.
 
+## E9 - Deployment replay on a second corpus, and the cost-side reading
+Registered before running. The paper's deployment findings rest on C4 alone while its
+measurement findings rest on four corpora; C4 is also the only corpus carrying a
+MEASURED per-run cost, which is why. We therefore replay on C2 with an ESTIMATED cost
+(tokens ~ characters/4, apportioned across steps by message length - the same
+apportionment the C4 harness already uses per step), disclosed as an estimate. Absolute
+token figures are therefore approximate; every claim we draw is a RELATIVE comparison
+between policies replayed on identical runs, which the estimate supports.
+Design: target C2 (SWE-rebench / OpenHands / Qwen3-Coder-480B); prior transferred from
+C1 (SWE-agent / Llama-3) over the 1,203 tasks the corpora share, so the transfer crosses
+model family, scaffold and corpus - harder than C4's within-corpus transfer. Policies:
+round-robin; static transferred ranking in fixed priority order; budgeted Thompson
+sampling with the transferred prior; and the same with an uninformative prior, which
+isolates the prior's contribution.
+Two readings of the same simulation, both reported whatever they show:
+  (a) tasks solved at a fixed budget;
+  (b) budget needed to reach a fixed number solved, and the implied saving against
+      round-robin - the cost-side statement practitioners actually act on.
+Decision rule, fixed in advance:
+- If ranking/allocation beats round-robin on C2 as it does on C4, we report the
+  deployment finding as generalizing across corpus, scaffold and model family.
+- If it does NOT, we report that plainly and scope the deployment claim to C4,
+  keeping the measurement claims untouched.
+- If the uninformative-prior variant matches the transferred-prior one, we report that
+  the prior contributes nothing here and say so, even though the transferred prior is
+  our own proposed ingredient.
+Scripts: 115_build_c2_runs.py, 116_deploy_c2.py.
+
