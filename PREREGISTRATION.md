@@ -306,3 +306,24 @@ Decision rule, fixed in advance:
   our own proposed ingredient.
 Scripts: 115_build_c2_runs.py, 116_deploy_c2.py.
 
+## E2-E - The requirement curve on a second corpus
+Registered before running. The crossing point (the within-task AUROC at which aborting
+begins to add throughput over allocation) is the number that converts a measured 0.52
+into "an order of magnitude short", and it has rested on C4-L alone. E2-D varied the
+monitor's ERROR STRUCTURE and E9 gave a second corpus for the deployment REPLAY; neither
+re-estimated the crossing itself. Here it is re-estimated on C2 using the E9 cost table
+and the identical protocol (50/50 TUNE/EVAL task split, thresholds tuned per budget on
+TUNE only, paired seeds, EVAL touched once), for monitor families A and D.
+The allocation baseline is deliberately the STRONGEST available on this corpus:
+Thompson sampling with an uninformative prior, because E9 showed the C1-transferred
+prior hurts here. Using the weaker warm-start variant would flatter the monitor.
+Decision rule, fixed in advance:
+- If the C2 crossing lands near C4-L's 0.84-0.93 (family A) / 0.90-1.00 (family D), we
+  report the requirement as corpus-stable and keep the framing.
+- If it lands materially LOWER, we report the lower value, widen the stated band, and
+  weaken "an order of magnitude short" accordingly - including if it falls near the late
+  within-task values we measure on weaker acting models (C1: 0.59-0.67), in which case
+  we will say plainly that late monitoring on weak models may be near useful.
+- If it lands HIGHER, we report that the requirement is understated.
+Script: 117_required_within_c2.py.
+
