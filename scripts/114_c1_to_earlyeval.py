@@ -9,8 +9,14 @@ command's observation. The mapping is mechanical and content-preserving:
   ai turn    -> {role: assistant, message_type: "action",
                  action: "<last fenced block>", thought: "<prose before first fence>",
                  content: <full text>, tool_calls: [{function:{name,arguments}}]}
-  user turn  -> {role: tool, content: text}
+  FIRST user turn -> {role: user, content: text}   (the issue statement / task prompt)
+  later user turns -> {role: tool, content: text}  (command observations)
   system     -> {role: system, content: text}
+
+The first/later split matters: in SWE-agent the opening user turn is the issue text,
+not an observation, and the released step builder reads the task prompt from a user
+turn. Mapping every user turn to `tool` leaves task_prompt_text empty and the
+pipeline's first TF-IDF vectorizer fails with an empty vocabulary.
 
 instance_id keeps the real SWE-bench id so the pipeline's gold-answer lookup and its
 instance-holdout split work; the acting model is carried in `model`/`model_id`, and the
@@ -41,6 +47,7 @@ def txt(v):
 def conv(traj):
     msgs = json.loads(traj) if isinstance(traj, str) else list(traj)
     out = []
+    seen_user = False
     for m in msgs:
         role = m.get("role") or ""
         body = txt(m.get("text"))
@@ -59,7 +66,11 @@ def conv(traj):
             else:
                 out.append({"role": "assistant", "content": body})
         elif role == "user":
-            out.append({"role": "tool", "content": body})
+            if not seen_user:
+                seen_user = True
+                out.append({"role": "user", "content": body})
+            else:
+                out.append({"role": "tool", "content": body})
         else:
             out.append({"role": "system", "content": body})
     return out
