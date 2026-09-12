@@ -1,0 +1,59 @@
+[data] 500 tasks with C4-Q prior | 4490 runs
+[monitor] cross-fitted prefix predictor at k=5
+[split] 250 TUNE tasks / 250 EVAL tasks (seed 42)
+
+[tuning on TUNE tasks only]
+  budget  1.0M abort : quantile 0.60 (thr 0.464) -> 16.6 tune-solved
+  budget  1.0M hybrid: quantile 0.50 (thr 0.437) -> 45.7 tune-solved
+  budget  2.5M abort : quantile 0.50 (thr 0.437) -> 42.8 tune-solved
+  budget  2.5M hybrid: quantile 0.90 (thr 0.525) -> 79.5 tune-solved
+  budget  5.0M abort : quantile 0.60 (thr 0.464) -> 83.6 tune-solved
+  budget  5.0M hybrid: quantile 0.90 (thr 0.525) -> 116.8 tune-solved
+  budget 10.0M abort : quantile 0.95 (thr 0.638) -> 141.7 tune-solved
+  budget 10.0M hybrid: quantile 0.90 (thr 0.525) -> 147.6 tune-solved
+
+[evaluation on EVAL tasks, 150 paired trials]
+
+  budget 1.0M
+    round-robin                   16.0  [   9.7,   24.0]
+    static transferred rank       55.2  [  51.7,   58.3]
+    Thompson, uninformative       47.3  [  44.0,   52.0]
+    Thompson + transferred        52.5  [  48.0,   56.0]
+    abort @ median (untuned)      18.3  [  12.0,   26.3]
+    tuned abort only              16.8  [  10.0,   24.0]
+    Thompson+transf + tuned       48.3  [  44.0,   52.0]
+    paired diff  Thompson+transf + tuned    - allocate =   -4.2  [ -10.0,   +1.0]
+    paired diff  tuned abort only           - allocate =  -35.7  [ -43.3,  -27.0]
+
+  budget 2.5M
+    round-robin                   38.6  [  27.7,   48.0]
+    static transferred rank       99.5  [  94.0,  104.3]
+    Thompson, uninformative       80.9  [  76.0,   86.0]
+    Thompson + transferred        94.4  [  88.0,  100.3]
+    abort @ median (untuned)      45.3  [  36.0,   55.3]
+    tuned abort only              45.3  [  36.0,   55.3]
+    Thompson+transf + tuned       93.8  [  88.0,   99.3]
+    paired diff  Thompson+transf + tuned    - allocate =   -0.6  [  -8.3,   +8.0]
+    paired diff  tuned abort only           - allocate =  -49.1  [ -59.0,  -38.0]
+
+  budget 5.0M
+    round-robin                   76.8  [  64.7,   89.6]
+    static transferred rank      134.2  [ 127.0,  140.0]
+    Thompson, uninformative      115.3  [ 109.7,  121.0]
+    Thompson + transferred       130.8  [ 124.0,  137.0]
+    abort @ median (untuned)      84.9  [  75.0,   94.3]
+    tuned abort only              82.9  [  71.7,   93.3]
+    Thompson+transf + tuned      128.6  [ 122.7,  136.0]
+    paired diff  Thompson+transf + tuned    - allocate =   -2.2  [ -11.0,   +7.0]
+    paired diff  tuned abort only           - allocate =  -47.8  [ -60.3,  -35.7]
+
+  budget 10.0M
+    round-robin                  146.9  [ 139.0,  156.0]
+    static transferred rank      151.7  [ 141.4,  159.0]
+    Thompson, uninformative      143.7  [ 137.7,  150.0]
+    Thompson + transferred       161.2  [ 154.7,  167.0]
+    abort @ median (untuned)     120.7  [ 112.0,  129.0]
+    tuned abort only             144.2  [ 135.0,  154.0]
+    Thompson+transf + tuned      159.2  [ 153.0,  165.0]
+    paired diff  Thompson+transf + tuned    - allocate =   -2.0  [ -10.3,   +7.0]
+    paired diff  tuned abort only           - allocate =  -17.0  [ -27.0,   -6.0]
