@@ -327,3 +327,56 @@ Decision rule, fixed in advance:
 - If it lands HIGHER, we report that the requirement is understated.
 Script: 117_required_within_c2.py.
 
+## E10 - Is the within-task estimate an artifact of conditioning on observed-mixed units?
+Registered before running; re-analysis only, no new data. \within{} is identifiable only
+on units observed with both outcomes, and with few repeats a moderately stochastic unit
+is likelier to enter that set than a near-deterministic one. We therefore compare four
+weightings of the same held-out scores:
+  (a) pair-weighted over observed mixed units  - the paper's current primary;
+  (b) macro: each observed mixed unit weighted equally;
+  (c) task-uniform among units with identifiable pairs;
+  (d) posterior-predictive over ALL units: latent per-unit success rates q_u are fitted
+      (beta-binomial method of moments, and a logistic random-effects fit as a check),
+      and each unit is weighted by its probability of producing a future
+      success-failure pair, 2 q_u (1 - q_u) - which does not condition on what the
+      finite sample happened to show.
+We additionally simulate observation at r = 3, 5, 10, 20 repeats to show whether the
+observed-mixed estimator drifts systematically with repeat count.
+Decision rule, fixed in advance:
+- If (d) agrees with (a) to within about 0.02, we report the estimand as robust to the
+  conditioning and keep (a) as primary.
+- If (d) differs materially, we report the difference, say plainly that the observed-
+  mixed conditioning was doing work, and reconsider which weighting is primary -
+  including adopting (d) if it is the better-motivated target.
+Script: 118_estimand_sensitivity.py.
+
+## E11 - Turn-control as a deployment baseline
+Registered before running. Our replay compares allocation against monitor-triggered
+aborting, but the strongest current SE-specific compute-control method is turn control
+(Gao & Peng, ICSE 2026), which we cite without running. We add two policies to the
+existing harness: a FIXED cap at the 75th percentile of successful-run length, and a
+DYNAMIC cap that extends a run only while it continues to show progress (new files
+touched, tests newly passing) and cuts it otherwise. Both are evaluated on C4-L and C2
+against round-robin, the static transferred ranking, allocation, and abort-only, on the
+same held-out splits, paired seeds, and budgets.
+Decision rule, fixed in advance:
+- If turn control does NOT beat allocation, we report it as a further baseline that the
+  task-level policy dominates.
+- If turn control DOES beat allocation at some budgets, we report that plainly and
+  revise section 6's framing: the value would then lie in cost control rather than in
+  either monitoring or allocation, and we will say so even though it displaces our own
+  proposal.
+Script: 119_turn_control.py.
+
+## E6-C1b - Larger C1 shard, to honour the per-acting-model commitment
+Registered before running. E6-C1's registration committed us to reporting results PER
+ACTING MODEL; at a 20% shard the test split held 25 mixed units across three models,
+too thin to split, and we reported that limitation rather than splitting anyway. We now
+double the shard to 40% as a SUPERSET: the existing seed-4242 718 instances are kept and
+a further 718 are drawn from the remainder (numpy default_rng seed 4243), so the reported
+20% result is nested in the larger one and nothing already reported is discarded. The
+combined instance list is committed before the run.
+Protocol and decision rule unchanged from E6-C1. Additionally: if the enlarged test
+split supports per-model estimates, we report them; if it still does not, we say so
+again rather than splitting past the evidence.
+
