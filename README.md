@@ -95,6 +95,7 @@ unmodified, and then score its own output predictions under both estimands.
 | E10: estimand sensitivity (four weightings, drift) | `118_estimand_sensitivity.py` |
 | E11: turn control as a deployment baseline | `119_turn_control.py` |
 | numbers audit (every numeral → produced artifact) | `113_numbers_audit.py` |
+| E12: difficulty-only ceilings outside coding (outcome tables only) | `120_e12_outcome_tables.py` |
 
 **Prefix convention.** `prefix_step_idx = k` means *k steps have been observed*, so index
 `0` is a pre-run prediction with no run content. Scripts `106`, `110`, `111`, `112` and
