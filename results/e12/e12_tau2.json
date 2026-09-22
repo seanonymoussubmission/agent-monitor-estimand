@@ -1,0 +1,328 @@
+{
+  "domains": [
+    {
+      "domain": "tau2-airline",
+      "units": 200,
+      "runs": 800,
+      "mixed_units": 75,
+      "mixed_pct": 37.5,
+      "within_pairs": 247.0,
+      "null_sd": 0.041072004840845354,
+      "mde": 0.615001613554367,
+      "reported": true,
+      "ceiling_plugin": 0.9615848942712165,
+      "ceiling_md": 0.9615848942712164,
+      "measured_loo": 0.8785014996321657,
+      "w": 0.0015530781757933589,
+      "mu": 0.46125,
+      "MD": 0.4588125
+    },
+    {
+      "domain": "tau2-retail",
+      "units": 456,
+      "runs": 1824,
+      "mixed_units": 186,
+      "mixed_pct": 40.78947368421053,
+      "within_pairs": 610.0,
+      "null_sd": 0.026135418674465827,
+      "mde": 0.5731791722885043,
+      "reported": true,
+      "ceiling_plugin": 0.9412870090634441,
+      "ceiling_md": 0.9412870090634441,
+      "measured_loo": 0.8079350453172205,
+      "w": 0.0009214501510574018,
+      "mu": 0.2741228070175439,
+      "MD": 0.3512282625423207
+    },
+    {
+      "domain": "tau2-telecom",
+      "units": 1140,
+      "runs": 4560,
+      "mixed_units": 329,
+      "mixed_pct": 28.859649122807017,
+      "within_pairs": 1074.0,
+      "null_sd": 0.019696644135294407,
+      "mde": 0.5551506035788243,
+      "reported": true,
+      "ceiling_plugin": 0.9761314305817256,
+      "ceiling_md": 0.9761314305817256,
+      "measured_loo": 0.9098004862611854,
+      "w": 0.00022121505976102182,
+      "mu": 0.3714912280701754,
+      "MD": 0.44467913204062787
+    },
+    {
+      "domain": "tau2-telecom-workflow",
+      "units": 912,
+      "runs": 3648,
+      "mixed_units": 299,
+      "mixed_pct": 32.78508771929825,
+      "within_pairs": 980.0,
+      "null_sd": 0.020619652471058073,
+      "mde": 0.5577350269189626,
+      "reported": true,
+      "ceiling_plugin": 0.9650491153492647,
+      "ceiling_md": 0.9650491153492647,
+      "measured_loo": 0.8744230382582721,
+      "w": 0.0003518497242647059,
+      "mu": 0.2982456140350877,
+      "MD": 0.38933013042474607
+    }
+  ],
+  "cells": [
+    {
+      "domain": "tau2-airline",
+      "cell": "claude-3-7-sonnet-20250219|default",
+      "units": 50,
+      "mixed_units": 16,
+      "reported": false
+    },
+    {
+      "domain": "tau2-airline",
+      "cell": "gpt-4.1-2025-04-14|default",
+      "units": 50,
+      "mixed_units": 19,
+      "reported": false
+    },
+    {
+      "domain": "tau2-airline",
+      "cell": "gpt-4.1-mini-2025-04-14|base",
+      "units": 50,
+      "mixed_units": 21,
+      "reported": false
+    },
+    {
+      "domain": "tau2-airline",
+      "cell": "o4-mini-2025-04-16|default",
+      "units": 50,
+      "mixed_units": 19,
+      "reported": false
+    },
+    {
+      "domain": "tau2-retail",
+      "cell": "claude-3-7-sonnet-20250219|default",
+      "units": 114,
+      "mixed_units": 38,
+      "ceiling_md": 0.9503345490049679,
+      "measured_loo": 0.8245412514717284,
+      "w": 0.0037044482095166986,
+      "mu": 0.21271929824561403,
+      "reported": true
+    },
+    {
+      "domain": "tau2-retail",
+      "cell": "gpt-4.1-2025-04-14|default",
+      "units": 114,
+      "mixed_units": 43,
+      "ceiling_md": 0.9506067596028482,
+      "measured_loo": 0.8232875338481597,
+      "w": 0.003409888677163775,
+      "mu": 0.25877192982456143,
+      "reported": true
+    },
+    {
+      "domain": "tau2-retail",
+      "cell": "gpt-4.1-mini-2025-04-14|base",
+      "units": 114,
+      "mixed_units": 53,
+      "ceiling_md": 0.9273496945664987,
+      "measured_loo": 0.7903118636802058,
+      "w": 0.003836673454077805,
+      "mu": 0.3399122807017544,
+      "reported": true
+    },
+    {
+      "domain": "tau2-retail",
+      "cell": "o4-mini-2025-04-16|default",
+      "units": 114,
+      "mixed_units": 52,
+      "ceiling_md": 0.931524303916942,
+      "measured_loo": 0.7870693723454459,
+      "w": 0.00391694195375177,
+      "mu": 0.2850877192982456,
+      "reported": true
+    },
+    {
+      "domain": "tau2-telecom",
+      "cell": "claude-3-7-sonnet-20250219|default",
+      "units": 114,
+      "mixed_units": 51,
+      "ceiling_md": 0.9475613275613275,
+      "measured_loo": 0.8460606060606061,
+      "w": 0.003136123136123136,
+      "mu": 0.506578947368421,
+      "reported": true
+    },
+    {
+      "domain": "tau2-telecom",
+      "cell": "gpt-4.1-2025-04-14|default",
+      "units": 114,
+      "mixed_units": 35,
+      "ceiling_md": 0.9720512820512821,
+      "measured_loo": 0.8973076923076924,
+      "w": 0.002435897435897436,
+      "mu": 0.6578947368421053,
+      "reported": true
+    },
+    {
+      "domain": "tau2-telecom",
+      "cell": "gpt-4.1-2025-04-14|no-user",
+      "units": 114,
+      "mixed_units": 47,
+      "ceiling_md": 0.9542216231828247,
+      "measured_loo": 0.8618080292673534,
+      "w": 0.0029459901800327334,
+      "mu": 0.48464912280701755,
+      "reported": true
+    },
+    {
+      "domain": "tau2-telecom",
+      "cell": "gpt-4.1-2025-04-14|no-user-op",
+      "units": 114,
+      "mixed_units": 39,
+      "ceiling_md": 0.9579374386712299,
+      "measured_loo": 0.8777253907091401,
+      "w": 0.0031352463920733312,
+      "mu": 0.27850877192982454,
+      "reported": true
+    },
+    {
+      "domain": "tau2-telecom",
+      "cell": "gpt-4.1-2025-04-14|op",
+      "units": 114,
+      "mixed_units": 31,
+      "ceiling_md": 0.9754178002331908,
+      "measured_loo": 0.899363583365721,
+      "w": 0.0024290711232024874,
+      "mu": 0.2719298245614035,
+      "reported": true
+    },
+    {
+      "domain": "tau2-telecom",
+      "cell": "gpt-4.1-mini-2025-04-14|base",
+      "units": 114,
+      "mixed_units": 58,
+      "ceiling_md": 0.9278124999999999,
+      "measured_loo": 0.806796875,
+      "w": 0.00375,
+      "mu": 0.5614035087719298,
+      "reported": true
+    },
+    {
+      "domain": "tau2-telecom",
+      "cell": "o4-mini-2025-04-16|default",
+      "units": 114,
+      "mixed_units": 38,
+      "ceiling_md": 0.9685132575757576,
+      "measured_loo": 0.8938802083333334,
+      "w": 0.0024857954545454545,
+      "mu": 0.5789473684210527,
+      "reported": true
+    },
+    {
+      "domain": "tau2-telecom",
+      "cell": "o4-mini-2025-04-16|no-user",
+      "units": 114,
+      "mixed_units": 12,
+      "reported": false
+    },
+    {
+      "domain": "tau2-telecom",
+      "cell": "o4-mini-2025-04-16|no-user-op",
+      "units": 114,
+      "mixed_units": 5,
+      "reported": false
+    },
+    {
+      "domain": "tau2-telecom",
+      "cell": "o4-mini-2025-04-16|op",
+      "units": 114,
+      "mixed_units": 13,
+      "reported": false
+    },
+    {
+      "domain": "tau2-telecom-workflow",
+      "cell": "gpt-4.1-2025-04-14|default",
+      "units": 114,
+      "mixed_units": 44,
+      "ceiling_md": 0.9593220338983051,
+      "measured_loo": 0.873959938366718,
+      "w": 0.002773497688751926,
+      "mu": 0.4824561403508772,
+      "reported": true
+    },
+    {
+      "domain": "tau2-telecom-workflow",
+      "cell": "gpt-4.1-2025-04-14|no-user",
+      "units": 114,
+      "mixed_units": 34,
+      "ceiling_md": 0.9708867521367521,
+      "measured_loo": 0.8957665598290598,
+      "w": 0.0025373931623931625,
+      "mu": 0.3157894736842105,
+      "reported": true
+    },
+    {
+      "domain": "tau2-telecom-workflow",
+      "cell": "gpt-4.1-2025-04-14|no-user-op",
+      "units": 114,
+      "mixed_units": 39,
+      "ceiling_md": 0.9540609460665561,
+      "measured_loo": 0.8483488461048069,
+      "w": 0.003391559352288665,
+      "mu": 0.25219298245614036,
+      "reported": true
+    },
+    {
+      "domain": "tau2-telecom-workflow",
+      "cell": "gpt-4.1-2025-04-14|op",
+      "units": 114,
+      "mixed_units": 36,
+      "ceiling_md": 0.9730248218620312,
+      "measured_loo": 0.9011627906976745,
+      "w": 0.0022707697126301777,
+      "mu": 0.4342105263157895,
+      "reported": true
+    },
+    {
+      "domain": "tau2-telecom-workflow",
+      "cell": "o4-mini-2025-04-16|default",
+      "units": 114,
+      "mixed_units": 44,
+      "ceiling_md": 0.9596788670589409,
+      "measured_loo": 0.8690735015458263,
+      "w": 0.002812406502443403,
+      "mu": 0.4057017543859649,
+      "reported": true
+    },
+    {
+      "domain": "tau2-telecom-workflow",
+      "cell": "o4-mini-2025-04-16|no-user",
+      "units": 114,
+      "mixed_units": 44,
+      "ceiling_md": 0.9486513653878372,
+      "measured_loo": 0.8310796256850872,
+      "w": 0.003470310891989565,
+      "mu": 0.27850877192982454,
+      "reported": true
+    },
+    {
+      "domain": "tau2-telecom-workflow",
+      "cell": "o4-mini-2025-04-16|no-user-op",
+      "units": 114,
+      "mixed_units": 26,
+      "reported": false
+    },
+    {
+      "domain": "tau2-telecom-workflow",
+      "cell": "o4-mini-2025-04-16|op",
+      "units": 114,
+      "mixed_units": 32,
+      "ceiling_md": 0.9475175697120835,
+      "measured_loo": 0.7521650419406031,
+      "w": 0.004670142824756291,
+      "mu": 0.1206140350877193,
+      "reported": true
+    }
+  ]
+}
