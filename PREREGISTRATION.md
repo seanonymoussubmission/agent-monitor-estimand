@@ -380,3 +380,45 @@ Protocol and decision rule unchanged from E6-C1. Additionally: if the enlarged t
 split supports per-model estimates, we report them; if it still does not, we say so
 again rather than splitting past the evidence.
 
+
+## E12 - Difficulty-only ceilings outside coding, and across many scaffolds
+Registered before downloading or computing anything. Our external-validity limitation is
+that three of four corpora are pure coding and the capability trend rests on one primary
+scaffold. Two public corpora already record repeated attempts and can be analysed from
+their OUTCOME TABLES ALONE, with no trajectories, no predictor and no model inference:
+
+- tau2-bench (Sierra), non-coding tool-agent-user interaction across airline, retail and
+  telecom domains; published baselines and leaderboard submissions carry four trials per
+  configuration with per-simulation rewards.
+- Terminal-Bench 2.0, 89 tasks attempted five times per agent, with roughly 100 agents
+  spanning about 23 distinct agent scaffolds.
+
+For each benchmark-domain we compute, using scripts 90/91/92 unchanged: the observed
+mixed-outcome rate, the same-task pair weight w, the difficulty-only pooled AUROC ceiling
+1/2 + MD/(4 mu (1-mu)), its finite-r refinement, and the analytic permutation-null SD
+(hence the minimum detectable within-task effect). A unit is an (agent-or-model, task)
+pair; a trial is a run. No predictor is fit, so no within-task AUROC of any predictor is
+claimed here - this experiment scopes where a high POOLED number could be explained by
+task difficulty, and where it could not.
+
+Decision rule, fixed in advance. The unfavourable branch first:
+- If the difficulty-only ceilings in these domains are SUBSTANTIALLY LOWER than in our
+  corpora (we fix "substantially lower" as a ceiling below 0.80, against 0.95-0.99 on
+  C1-C4), or if w is NOT small (above 1e-2), then our critique is narrower than the paper
+  currently implies. We will report that these are settings where a published pooled
+  AUROC in the 0.85-0.94 band is NOT automatically attributable to task difficulty,
+  generalising the existing tau2-telecom caveat rather than the main claim, and we will
+  say so in Threats to Validity and in the abstract's scoping sentence.
+- If the ceilings are COMPARABLE to our corpora and w is small, we report that the
+  precondition for the critique holds outside coding and across many scaffolds, and the
+  external-validity limitation is narrowed accordingly.
+- Mixed results across domains (likely, since tau2 domains differ) are reported per
+  domain without aggregation, and the paper states which domains the critique covers.
+
+Go/no-go, also fixed in advance: a benchmark-domain is reported only if it yields at
+least 30 mixed-outcome units; below that we report the count and decline to estimate a
+ceiling from it, rather than reporting a noisy number.
+
+Reported regardless of direction. Scripts: existing 90/91/92 plus one adapter per
+benchmark (120, 121) that converts released results into the (unit, run, outcome) table
+those scripts already accept.
