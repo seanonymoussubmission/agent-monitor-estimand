@@ -1,0 +1,14 @@
+{
+  "experiment": "transferred-prior weight sensitivity (reviewer comment 2)",
+  "script": "54_bandit_allocation.py",
+  "target": "C4-Q", "prior_from": "C4-L", "budget": 2000000, "trials": 200,
+  "note": "mean +/- standard deviation across trials; MC standard error = sd/sqrt(200)",
+  "by_lambda": {
+    "0.25": {"bandit_transferred": 152.0, "sd": 2.9, "bandit_no_prior": 135.7, "static_rank": 166.6, "round_robin": 53.0, "oracle": 172.9},
+    "0.5":  {"bandit_transferred": 159.3, "sd": 3.1, "bandit_no_prior": 136.0, "static_rank": 166.6, "round_robin": 53.0, "oracle": 172.9},
+    "1.0":  {"bandit_transferred": 162.1, "sd": 3.7, "bandit_no_prior": 135.4, "static_rank": 166.6, "round_robin": 53.0, "oracle": 172.9},
+    "2.0":  {"bandit_transferred": 162.0, "sd": 4.1, "bandit_no_prior": 135.7, "static_rank": 166.6, "round_robin": 53.0, "oracle": 172.9},
+    "4.0":  {"bandit_transferred": 160.9, "sd": 4.9, "bandit_no_prior": 136.1, "static_rank": 166.6, "round_robin": 53.0, "oracle": 172.9}
+  },
+  "finding": "transferred-prior benefit is flat for lambda in [0.5,4] and degrades only at 0.25; every value beats the no-prior bandit; the static transferred ranking (166.6) is unaffected by lambda and remains best at this budget"
+}

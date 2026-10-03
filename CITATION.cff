@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this replication package, please cite the archived record."
+title: "Replication package: What Does Agent Failure Prediction Actually Predict? Separating Task Difficulty from Run-Level Failure"
+abstract: >-
+  Code, analysis scripts, pre-registration and stored outputs for a study of what
+  pooled AUROC measures in agent failure prediction. Decomposes pooled AUROC into
+  within-unit and cross-unit components over repeated attempts of the same
+  (model, task) unit, evaluates published and released monitors at
+  online-computable prefixes, and compares task-level allocation against
+  run-level aborting under fixed token budgets.
+authors:
+  - name: "Anonymous (double-blind review)"
+type: software
+license: MIT
+doi: 10.5281/zenodo.23065466
+version: "1.0.0"
+date-released: 2026-10-03
+keywords:
+  - LLM agents
+  - failure prediction
+  - evaluation validity
+  - measurement
+  - empirical software engineering

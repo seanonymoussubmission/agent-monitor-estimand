@@ -83,10 +83,14 @@ def run_policy(kind, rng, w=1.0, give_up=None, cost_sample=False):
             # engineer builds without any of our machinery
             unseen = [t for t in alive if seen[t] == 0]
             if unseen: cand = unseen[0]
-            else: cand = max(alive, key=lambda t: (wins[t] / max(seen[t], 1)) / c_mean[t])
+            else: cand = max(sorted(alive), key=lambda t: (wins[t] / max(seen[t], 1)) / c_mean[t])
         else:                                    # thompson sampling
             best, bv = None, -1.0
-            for t in alive:
+            # sorted(), not set order: each candidate consumes one rng.beta draw,
+            # so iterating the set makes the draw sequence follow string hash order,
+            # which the interpreter randomises per process. Without this the bandit
+            # rows are not reproducible run to run despite the fixed per-trial seed.
+            for t in sorted(alive):
                 th = rng.beta(ab[t][0], ab[t][1])
                 # P7: cost is a random variable, not its mean. Budgeted TS samples
                 # BOTH reward and cost posteriors; using c_mean throws away the fact

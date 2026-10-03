@@ -1,4 +1,6 @@
-# Replication package — *When Agent Failure Prediction Measures Task Difficulty Rather Than the Run*
+# Replication package
+
+*What Does Agent Failure Prediction Actually Predict? Separating Task Difficulty from Run-Level Failure*
 
 Anonymous artifact for double-blind review. Everything here regenerates the paper's
 headline results; `make test` needs no data at all.
@@ -7,14 +9,14 @@ headline results; `make test` needs no data at all.
 - `tests/test_metrics.py` — unit tests A–E for the core estimators (no data needed)
 - `scripts/`               — numbered analysis scripts (inventory below)
 - `results/`               — stored JSON outputs of the supplementary experiments
-                             (`e6`, `e7`, `e9`, `e10`, `e11`, `e2`, `e2e`, `deploy`),
+                             (`e6`, `e6c1`, `e6c1b`, `e7`, `e9`, `e10`, `e11`, `e12`, `e2`, `e2e`,
+                             `deploy`, `lambda_sweep`, `alloc_c4q_corrected`),
                              so every reported number can be checked without re-running
 - `preregistered/`         — the registered five-fold instance partition
                              (`e6_folds/fold1..5.txt`, 6,306 instances, disjoint) and an
                              OpenTimestamps Bitcoin attestation of the manifest
 - `PREREGISTRATION.md`     — decision rules for every supplementary experiment, each
                              naming the outcome that would have counted against us
-- `paper/`                 — the submission PDF and its supplement
 - `Makefile`               — `make test` and `make reproduce-main`
 
 ## Environment

@@ -1,0 +1,14 @@
+{
+  "experiment": "C4-Q allocation, determinism-corrected script",
+  "script": "54_bandit_allocation.py (sorted(alive) fix at lines 86 and 89)",
+  "target": "C4-Q", "prior_from": "C4-L", "trials": 200, "prior_weight": 1.0,
+  "note": "mean tasks solved +/- standard deviation across trials; three identical runs verified byte-identical",
+  "budgets": ["2M", "5M", "10M", "40M"],
+  "rows": {
+    "round_robin":         {"mean": [53.030, 131.650, 261.815, 360.230], "sd": [6.353, 8.226, 8.447, 3.278]},
+    "static_transferred":  {"mean": [166.590, 256.875, 296.085, 360.575], "sd": [3.050, 4.368, 5.136, 3.550]},
+    "bandit_uninformative":{"mean": [135.415, 212.145, 270.345, 358.830], "sd": [2.980, 3.538, 4.323, 3.167]},
+    "bandit_transferred":  {"mean": [162.015, 245.820, 307.720, 360.645], "sd": [3.698, 4.319, 4.222, 2.193]},
+    "oracle":              {"mean": [172.880, 277.800, 346.460, 375.000], "sd": [2.355, 3.237, 3.460, 0.000]}
+  }
+}
